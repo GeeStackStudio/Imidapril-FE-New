@@ -1,0 +1,92 @@
+.blue-card {
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .card {
+      margin-top: -15px;
+      position: relative;
+      clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px), 0% 10px);
+      border: 2px solid lighten(#1b449c, 10%);
+      height: 100%;
+      width: 100%;
+      flex: 1;
+      z-index: 3;
+
+      &:before {
+        content: '';
+        position: absolute;
+        box-shadow: 0 0 50px 0 lighten(#041c5b, 10%) inset;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        flex: 1;
+        pointer-events: none;
+        z-index: 4;
+      }
+
+      .card-border-left-top {
+        position: absolute;
+        margin: -2px;
+        top: 0;
+        pointer-events: none;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background: url("../../assets/card-left-top.png") no-repeat;
+      }
+
+      .card-border-right-top {
+        position: absolute;
+        margin: -2px;
+        top: 0;
+        pointer-events: none;
+        right: 0;
+        height: 20px;
+        width: 20px;
+        background: url("../../assets/card-right-top.png") no-repeat;
+      }
+
+      .card-border-right-bottom {
+        position: absolute;
+        margin: -3px;
+        z-index: 3;
+        bottom: 0;
+        pointer-events: none;
+        right: 0;
+        height: 20px;
+        width: 20px;
+        background: url("../../assets/card-right-bottom.png") no-repeat;
+      }
+
+      .card-border-left-bottom {
+        position: absolute;
+        bottom: 0;
+        margin: -2px;
+        pointer-events: none;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background: url("../../assets/card-left-bottom.png") no-repeat;
+      }
+
+    }
+
+    .card-title {
+      //color: #02effe;
+      font-weight: 600;
+      width: 166px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 4;
+      background: url("../../assets/card-title.png") no-repeat;
+    }
+  }
+
+}
