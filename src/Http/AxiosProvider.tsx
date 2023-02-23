@@ -52,7 +52,7 @@ export default function AxiosProvider(props: IAxiosProviderProps): any {
       // if (auth.isLogin) {
       config.headers = {
         ...config.headers,
-        "Application-Token": "d54d5367-4494-4421-92b5-b71d51f5fa23",
+        "Application-Token": "5244a3e1-f074-4952-b88c-68d9957bbcee",
       };
       // }
       return config;

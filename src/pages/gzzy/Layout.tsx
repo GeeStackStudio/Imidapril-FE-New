@@ -11,7 +11,7 @@ import {
 } from "@ant-design/icons";
 import type { ProSettings } from "@ant-design/pro-components";
 import { PageContainer, ProLayout, ProCard } from "@ant-design/pro-components";
-import { Alert, Button, Input, Space } from "antd";
+import { Alert, Button, Input, Space, Typography } from "antd";
 import React, { useState } from "react";
 import { defaultProps } from "./routes";
 import { AlertPage } from "./Alert";
@@ -31,6 +31,8 @@ import { PondPage } from "./Pond";
 import { UserPage } from "./User";
 import { WorkloadCostPage } from "./WorkloadCost";
 import { CultureDetailPage } from "./CultureDetail";
+import { DeviceTestPage } from "./DeviceTest";
+import { DeviceOverviewPage } from "./DeviceOverview";
 export function LayoutPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -56,6 +58,11 @@ export function LayoutPage() {
               heightLayoutHeader: 64,
             },
           }}
+          headerTitleRender={() => (
+            <Typography.Text strong style={{ fontSize: 18 }}>
+              中洋鱼天下
+            </Typography.Text>
+          )}
           bgLayoutImgList={[
             {
               src: "https://img.alicdn.com/imgextra/i2/O1CN01O4etvp1DvpFLKfuWq_!!6000000000279-2-tps-609-606.png",
@@ -161,6 +168,7 @@ export function LayoutPage() {
           {...settings}
         >
           <Routes>
+            <Route path={"/app"} element={<Navigate to={"/culture/list"} />} />
             <Route path={"/alert"} element={<AlertPage />} />
             <Route index path={"/culture/list"} element={<CulturePage />} />
             <Route path={"/culture/:id"} element={<CultureDetailPage />} />
@@ -186,6 +194,12 @@ export function LayoutPage() {
               element={<WorkloadCostPage />}
             />
             <Route index path={"/work/manage"} element={<WorkloadCostPage />} />
+            <Route index path={"/device/test"} element={<DeviceTestPage />} />
+            <Route
+              index
+              path={"/device/overview"}
+              element={<DeviceOverviewPage />}
+            />
           </Routes>
         </ProLayout>
       </div>

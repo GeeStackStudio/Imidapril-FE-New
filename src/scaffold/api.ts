@@ -2814,124 +2814,16 @@ export interface Device {
     'alias'?: string | null;
     /**
      * 
-     * @type {ControlMethod}
-     * @memberof Device
-     */
-    'controlMethod'?: ControlMethod;
-    /**
-     * 
-     * @type {string}
-     * @memberof Device
-     */
-    'sensorFpId'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Device
-     */
-    'rawValue'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Device
-     */
-    'sensorUnit'?: string | null;
-    /**
-     * 
-     * @type {WaterQualityType}
-     * @memberof Device
-     */
-    'sensorType'?: WaterQualityType;
-    /**
-     * 
-     * @type {string}
-     * @memberof Device
-     */
-    'turnOnAbilityName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Device
-     */
-    'turnOffAbilityName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Device
-     */
-    'readAbilityName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Device
-     */
-    'groupName'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Device
-     */
-    'controlable'?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Device
-     */
-    'userGroupId'?: number | null;
-    /**
-     * 
-     * @type {UserGroup}
-     * @memberof Device
-     */
-    'userGroup'?: UserGroup;
-    /**
-     * 
-     * @type {number}
-     * @memberof Device
-     */
-    'yunPlcDeviceId'?: number | null;
-    /**
-     * 
-     * @type {YunPlcDevice}
-     * @memberof Device
-     */
-    'yunPlcDevice'?: YunPlcDevice;
-    /**
-     * 
      * @type {DeviceType}
      * @memberof Device
      */
     'type'?: DeviceType;
     /**
      * 
-     * @type {ControlDeviceType}
-     * @memberof Device
-     */
-    'controlDeviceType'?: ControlDeviceType;
-    /**
-     * 
-     * @type {SensorDeviceType}
-     * @memberof Device
-     */
-    'sensorDeviceType'?: SensorDeviceType;
-    /**
-     * 
-     * @type {string}
-     * @memberof Device
-     */
-    'fetchedTime'?: string | null;
-    /**
-     * 
      * @type {Array<DeviceBindRelation>}
      * @memberof Device
      */
     'deviceBindRelations'?: Array<DeviceBindRelation> | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Device
-     */
-    'isControlDeviceWorking'?: boolean | null;
     /**
      * 
      * @type {number}
@@ -3453,6 +3345,19 @@ export interface DeviceBindRelationDto {
 /**
  * 
  * @export
+ * @interface DeviceBroadCastModel
+ */
+export interface DeviceBroadCastModel {
+    /**
+     * 
+     * @type {string}
+     * @memberof DeviceBroadCastModel
+     */
+    'message'?: string | null;
+}
+/**
+ * 
+ * @export
  * @interface DeviceDto
  */
 export interface DeviceDto {
@@ -3674,85 +3579,19 @@ export interface DeviceSaveParams {
      * @type {string}
      * @memberof DeviceSaveParams
      */
-    'alias'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof DeviceSaveParams
-     */
     'remark'?: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof DeviceSaveParams
-     */
-    'yunPlcDeviceId'?: number | null;
-    /**
-     * 
      * @type {string}
      * @memberof DeviceSaveParams
      */
-    'readAbilityName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof DeviceSaveParams
-     */
-    'turnOffAbilityName'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof DeviceSaveParams
-     */
-    'turnOnAbilityName'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DeviceSaveParams
-     */
-    'controlable'?: boolean | null;
+    'alias'?: string | null;
     /**
      * 
      * @type {DeviceType}
      * @memberof DeviceSaveParams
      */
     'type': DeviceType;
-    /**
-     * 
-     * @type {string}
-     * @memberof DeviceSaveParams
-     */
-    'sensorFpId'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof DeviceSaveParams
-     */
-    'sensorUnit'?: string | null;
-    /**
-     * 
-     * @type {ControlDeviceType}
-     * @memberof DeviceSaveParams
-     */
-    'controlDeviceType'?: ControlDeviceType;
-    /**
-     * 
-     * @type {WaterQualityType}
-     * @memberof DeviceSaveParams
-     */
-    'sensorType'?: WaterQualityType;
-    /**
-     * 
-     * @type {ControlMethod}
-     * @memberof DeviceSaveParams
-     */
-    'controlMethod'?: ControlMethod;
-    /**
-     * 
-     * @type {SensorDeviceType}
-     * @memberof DeviceSaveParams
-     */
-    'sensorDeviceType'?: SensorDeviceType;
     /**
      * 
      * @type {number}
@@ -3771,6 +3610,25 @@ export interface DeviceSaveParams {
      * @memberof DeviceSaveParams
      */
     'isAdd'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface DeviceSendCommandModel
+ */
+export interface DeviceSendCommandModel {
+    /**
+     * 
+     * @type {string}
+     * @memberof DeviceSendCommandModel
+     */
+    'sn': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DeviceSendCommandModel
+     */
+    'command': string;
 }
 /**
  * 
@@ -3845,22 +3703,6 @@ export interface DeviceUpdateValueParams {
      */
     'id': number;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
-
-export const DeviceValueType = {
-    开关量: '开关量',
-    整数: '整数',
-    浮点数: '浮点数',
-    未知: '未知'
-} as const;
-
-export type DeviceValueType = typeof DeviceValueType[keyof typeof DeviceValueType];
-
-
 /**
  * 
  * @export
@@ -5574,57 +5416,6 @@ export interface SensorSearchResponse {
      * @memberof SensorSearchResponse
      */
     'total'?: number;
-}
-/**
- * 
- * @export
- * @interface SensorSocketBroadCastModel
- */
-export interface SensorSocketBroadCastModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof SensorSocketBroadCastModel
-     */
-    'message'?: string | null;
-}
-/**
- * 
- * @export
- * @interface SensorSocketOperateModel
- */
-export interface SensorSocketOperateModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof SensorSocketOperateModel
-     */
-    'sn': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof SensorSocketOperateModel
-     */
-    'channelNumber': number;
-}
-/**
- * 
- * @export
- * @interface SensorSocketSendCommandModel
- */
-export interface SensorSocketSendCommandModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof SensorSocketSendCommandModel
-     */
-    'sn': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SensorSocketSendCommandModel
-     */
-    'commandPrefix': string;
 }
 /**
  * 
@@ -7950,128 +7741,6 @@ export const WorkType = {
 export type WorkType = typeof WorkType[keyof typeof WorkType];
 
 
-/**
- * 
- * @export
- * @interface YunPlcDevice
- */
-export interface YunPlcDevice {
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDevice
-     */
-    'grm'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDevice
-     */
-    'pass'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDevice
-     */
-    'sid'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof YunPlcDevice
-     */
-    'needLogin'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDevice
-     */
-    'addr'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDevice
-     */
-    'fetchAddr'?: string | null;
-    /**
-     * 
-     * @type {Array<YunPlcDeviceAbilityStatus>}
-     * @memberof YunPlcDevice
-     */
-    'statusList'?: Array<YunPlcDeviceAbilityStatus> | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDevice
-     */
-    'expiredTime'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof YunPlcDevice
-     */
-    'id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDevice
-     */
-    'createdTime'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDevice
-     */
-    'deletedTime'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDevice
-     */
-    'restoredTime'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof YunPlcDevice
-     */
-    'isDelete'?: boolean;
-}
-/**
- * 
- * @export
- * @interface YunPlcDeviceAbilityStatus
- */
-export interface YunPlcDeviceAbilityStatus {
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDeviceAbilityStatus
-     */
-    'name'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof YunPlcDeviceAbilityStatus
-     */
-    'type'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof YunPlcDeviceAbilityStatus
-     */
-    'status'?: number | null;
-    /**
-     * 
-     * @type {DeviceValueType}
-     * @memberof YunPlcDeviceAbilityStatus
-     */
-    'valueType'?: DeviceValueType;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof YunPlcDeviceAbilityStatus
-     */
-    'isWorking'?: boolean;
-}
 
 /**
  * AlertApi - axios parameter creator
@@ -13464,8 +13133,6 @@ export const DeviceApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {number} pi 
          * @param {number} ps 
          * @param {string} [groupName] 
-         * @param {ControlDeviceType} [controlDeviceType] 
-         * @param {SensorDeviceType} [sensorDeviceType] 
          * @param {DeviceType} [type] 
          * @param {number} [pondId] 
          * @param {string} [keyword] 
@@ -13475,7 +13142,7 @@ export const DeviceApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deviceSearchGet: async (pi: number, ps: number, groupName?: string, controlDeviceType?: ControlDeviceType, sensorDeviceType?: SensorDeviceType, type?: DeviceType, pondId?: number, keyword?: string, sorterKey?: string, sorterOrder?: SorterOrder, isDelete?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deviceSearchGet: async (pi: number, ps: number, groupName?: string, type?: DeviceType, pondId?: number, keyword?: string, sorterKey?: string, sorterOrder?: SorterOrder, isDelete?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'pi' is not null or undefined
             assertParamExists('deviceSearchGet', 'pi', pi)
             // verify required parameter 'ps' is not null or undefined
@@ -13494,14 +13161,6 @@ export const DeviceApiAxiosParamCreator = function (configuration?: Configuratio
 
             if (groupName !== undefined) {
                 localVarQueryParameter['GroupName'] = groupName;
-            }
-
-            if (controlDeviceType !== undefined) {
-                localVarQueryParameter['ControlDeviceType'] = controlDeviceType;
-            }
-
-            if (sensorDeviceType !== undefined) {
-                localVarQueryParameter['SensorDeviceType'] = sensorDeviceType;
             }
 
             if (type !== undefined) {
@@ -13757,8 +13416,6 @@ export const DeviceApiFp = function(configuration?: Configuration) {
          * @param {number} pi 
          * @param {number} ps 
          * @param {string} [groupName] 
-         * @param {ControlDeviceType} [controlDeviceType] 
-         * @param {SensorDeviceType} [sensorDeviceType] 
          * @param {DeviceType} [type] 
          * @param {number} [pondId] 
          * @param {string} [keyword] 
@@ -13768,8 +13425,8 @@ export const DeviceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deviceSearchGet(pi: number, ps: number, groupName?: string, controlDeviceType?: ControlDeviceType, sensorDeviceType?: SensorDeviceType, type?: DeviceType, pondId?: number, keyword?: string, sorterKey?: string, sorterOrder?: SorterOrder, isDelete?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeviceDtoSearchResponseDto>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deviceSearchGet(pi, ps, groupName, controlDeviceType, sensorDeviceType, type, pondId, keyword, sorterKey, sorterOrder, isDelete, options);
+        async deviceSearchGet(pi: number, ps: number, groupName?: string, type?: DeviceType, pondId?: number, keyword?: string, sorterKey?: string, sorterOrder?: SorterOrder, isDelete?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeviceDtoSearchResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deviceSearchGet(pi, ps, groupName, type, pondId, keyword, sorterKey, sorterOrder, isDelete, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -13864,8 +13521,6 @@ export const DeviceApiFactory = function (configuration?: Configuration, basePat
          * @param {number} pi 
          * @param {number} ps 
          * @param {string} [groupName] 
-         * @param {ControlDeviceType} [controlDeviceType] 
-         * @param {SensorDeviceType} [sensorDeviceType] 
          * @param {DeviceType} [type] 
          * @param {number} [pondId] 
          * @param {string} [keyword] 
@@ -13875,8 +13530,8 @@ export const DeviceApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deviceSearchGet(pi: number, ps: number, groupName?: string, controlDeviceType?: ControlDeviceType, sensorDeviceType?: SensorDeviceType, type?: DeviceType, pondId?: number, keyword?: string, sorterKey?: string, sorterOrder?: SorterOrder, isDelete?: boolean, options?: any): AxiosPromise<DeviceDtoSearchResponseDto> {
-            return localVarFp.deviceSearchGet(pi, ps, groupName, controlDeviceType, sensorDeviceType, type, pondId, keyword, sorterKey, sorterOrder, isDelete, options).then((request) => request(axios, basePath));
+        deviceSearchGet(pi: number, ps: number, groupName?: string, type?: DeviceType, pondId?: number, keyword?: string, sorterKey?: string, sorterOrder?: SorterOrder, isDelete?: boolean, options?: any): AxiosPromise<DeviceDtoSearchResponseDto> {
+            return localVarFp.deviceSearchGet(pi, ps, groupName, type, pondId, keyword, sorterKey, sorterOrder, isDelete, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -13994,20 +13649,6 @@ export interface DeviceApiDeviceSearchGetRequest {
      * @memberof DeviceApiDeviceSearchGet
      */
     readonly groupName?: string
-
-    /**
-     * 
-     * @type {ControlDeviceType}
-     * @memberof DeviceApiDeviceSearchGet
-     */
-    readonly controlDeviceType?: ControlDeviceType
-
-    /**
-     * 
-     * @type {SensorDeviceType}
-     * @memberof DeviceApiDeviceSearchGet
-     */
-    readonly sensorDeviceType?: SensorDeviceType
 
     /**
      * 
@@ -14170,7 +13811,7 @@ export class DeviceApi extends BaseAPI {
      * @memberof DeviceApi
      */
     public deviceSearchGet(requestParameters: DeviceApiDeviceSearchGetRequest, options?: AxiosRequestConfig) {
-        return DeviceApiFp(this.configuration).deviceSearchGet(requestParameters.pi, requestParameters.ps, requestParameters.groupName, requestParameters.controlDeviceType, requestParameters.sensorDeviceType, requestParameters.type, requestParameters.pondId, requestParameters.keyword, requestParameters.sorterKey, requestParameters.sorterOrder, requestParameters.isDelete, options).then((request) => request(this.axios, this.basePath));
+        return DeviceApiFp(this.configuration).deviceSearchGet(requestParameters.pi, requestParameters.ps, requestParameters.groupName, requestParameters.type, requestParameters.pondId, requestParameters.keyword, requestParameters.sorterKey, requestParameters.sorterOrder, requestParameters.isDelete, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -15217,6 +14858,331 @@ export class DeviceAutoControlTriggerApi extends BaseAPI {
      */
     public deviceAutoControlTriggerUpdateEnablePost(requestParameters: DeviceAutoControlTriggerApiDeviceAutoControlTriggerUpdateEnablePostRequest = {}, options?: AxiosRequestConfig) {
         return DeviceAutoControlTriggerApiFp(this.configuration).deviceAutoControlTriggerUpdateEnablePost(requestParameters.deviceAutoControlTriggerUpdateEnableParams, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * DeviceSocketApi - axios parameter creator
+ * @export
+ */
+export const DeviceSocketApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {DeviceBroadCastModel} [deviceBroadCastModel] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deviceSocketBroadcastPost: async (deviceBroadCastModel?: DeviceBroadCastModel, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/DeviceSocket/Broadcast`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(deviceBroadCastModel, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {DeviceBroadCastModel} [deviceBroadCastModel] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deviceSocketBroadcastWithStrPost: async (deviceBroadCastModel?: DeviceBroadCastModel, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/DeviceSocket/BroadcastWithStr`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(deviceBroadCastModel, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deviceSocketListClientsGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/DeviceSocket/ListClients`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {DeviceSendCommandModel} [deviceSendCommandModel] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deviceSocketSendCommandPost: async (deviceSendCommandModel?: DeviceSendCommandModel, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/DeviceSocket/SendCommand`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(deviceSendCommandModel, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * DeviceSocketApi - functional programming interface
+ * @export
+ */
+export const DeviceSocketApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = DeviceSocketApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {DeviceBroadCastModel} [deviceBroadCastModel] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deviceSocketBroadcastPost(deviceBroadCastModel?: DeviceBroadCastModel, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deviceSocketBroadcastPost(deviceBroadCastModel, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {DeviceBroadCastModel} [deviceBroadCastModel] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deviceSocketBroadcastWithStrPost(deviceBroadCastModel?: DeviceBroadCastModel, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deviceSocketBroadcastWithStrPost(deviceBroadCastModel, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deviceSocketListClientsGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<string>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deviceSocketListClientsGet(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {DeviceSendCommandModel} [deviceSendCommandModel] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deviceSocketSendCommandPost(deviceSendCommandModel?: DeviceSendCommandModel, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deviceSocketSendCommandPost(deviceSendCommandModel, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * DeviceSocketApi - factory interface
+ * @export
+ */
+export const DeviceSocketApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = DeviceSocketApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {DeviceBroadCastModel} [deviceBroadCastModel] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deviceSocketBroadcastPost(deviceBroadCastModel?: DeviceBroadCastModel, options?: any): AxiosPromise<string> {
+            return localVarFp.deviceSocketBroadcastPost(deviceBroadCastModel, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {DeviceBroadCastModel} [deviceBroadCastModel] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deviceSocketBroadcastWithStrPost(deviceBroadCastModel?: DeviceBroadCastModel, options?: any): AxiosPromise<string> {
+            return localVarFp.deviceSocketBroadcastWithStrPost(deviceBroadCastModel, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deviceSocketListClientsGet(options?: any): AxiosPromise<Array<string>> {
+            return localVarFp.deviceSocketListClientsGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {DeviceSendCommandModel} [deviceSendCommandModel] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deviceSocketSendCommandPost(deviceSendCommandModel?: DeviceSendCommandModel, options?: any): AxiosPromise<void> {
+            return localVarFp.deviceSocketSendCommandPost(deviceSendCommandModel, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * Request parameters for deviceSocketBroadcastPost operation in DeviceSocketApi.
+ * @export
+ * @interface DeviceSocketApiDeviceSocketBroadcastPostRequest
+ */
+export interface DeviceSocketApiDeviceSocketBroadcastPostRequest {
+    /**
+     * 
+     * @type {DeviceBroadCastModel}
+     * @memberof DeviceSocketApiDeviceSocketBroadcastPost
+     */
+    readonly deviceBroadCastModel?: DeviceBroadCastModel
+}
+
+/**
+ * Request parameters for deviceSocketBroadcastWithStrPost operation in DeviceSocketApi.
+ * @export
+ * @interface DeviceSocketApiDeviceSocketBroadcastWithStrPostRequest
+ */
+export interface DeviceSocketApiDeviceSocketBroadcastWithStrPostRequest {
+    /**
+     * 
+     * @type {DeviceBroadCastModel}
+     * @memberof DeviceSocketApiDeviceSocketBroadcastWithStrPost
+     */
+    readonly deviceBroadCastModel?: DeviceBroadCastModel
+}
+
+/**
+ * Request parameters for deviceSocketSendCommandPost operation in DeviceSocketApi.
+ * @export
+ * @interface DeviceSocketApiDeviceSocketSendCommandPostRequest
+ */
+export interface DeviceSocketApiDeviceSocketSendCommandPostRequest {
+    /**
+     * 
+     * @type {DeviceSendCommandModel}
+     * @memberof DeviceSocketApiDeviceSocketSendCommandPost
+     */
+    readonly deviceSendCommandModel?: DeviceSendCommandModel
+}
+
+/**
+ * DeviceSocketApi - object-oriented interface
+ * @export
+ * @class DeviceSocketApi
+ * @extends {BaseAPI}
+ */
+export class DeviceSocketApi extends BaseAPI {
+    /**
+     * 
+     * @param {DeviceSocketApiDeviceSocketBroadcastPostRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DeviceSocketApi
+     */
+    public deviceSocketBroadcastPost(requestParameters: DeviceSocketApiDeviceSocketBroadcastPostRequest = {}, options?: AxiosRequestConfig) {
+        return DeviceSocketApiFp(this.configuration).deviceSocketBroadcastPost(requestParameters.deviceBroadCastModel, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {DeviceSocketApiDeviceSocketBroadcastWithStrPostRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DeviceSocketApi
+     */
+    public deviceSocketBroadcastWithStrPost(requestParameters: DeviceSocketApiDeviceSocketBroadcastWithStrPostRequest = {}, options?: AxiosRequestConfig) {
+        return DeviceSocketApiFp(this.configuration).deviceSocketBroadcastWithStrPost(requestParameters.deviceBroadCastModel, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DeviceSocketApi
+     */
+    public deviceSocketListClientsGet(options?: AxiosRequestConfig) {
+        return DeviceSocketApiFp(this.configuration).deviceSocketListClientsGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {DeviceSocketApiDeviceSocketSendCommandPostRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DeviceSocketApi
+     */
+    public deviceSocketSendCommandPost(requestParameters: DeviceSocketApiDeviceSocketSendCommandPostRequest = {}, options?: AxiosRequestConfig) {
+        return DeviceSocketApiFp(this.configuration).deviceSocketSendCommandPost(requestParameters.deviceSendCommandModel, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -18880,485 +18846,6 @@ export class SensorHistoryApi extends BaseAPI {
      */
     public sensorHistorySearchGet(requestParameters: SensorHistoryApiSensorHistorySearchGetRequest, options?: AxiosRequestConfig) {
         return SensorHistoryApiFp(this.configuration).sensorHistorySearchGet(requestParameters.pi, requestParameters.ps, requestParameters.deviceId, requestParameters.sorterKey, requestParameters.sorterOrder, requestParameters.isDelete, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-/**
- * SensorSocketApi - axios parameter creator
- * @export
- */
-export const SensorSocketApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {SensorSocketBroadCastModel} [sensorSocketBroadCastModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketBroadcastPost: async (sensorSocketBroadCastModel?: SensorSocketBroadCastModel, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/SensorSocket/Broadcast`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(sensorSocketBroadCastModel, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {SensorSocketBroadCastModel} [sensorSocketBroadCastModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketBroadcastWithStrPost: async (sensorSocketBroadCastModel?: SensorSocketBroadCastModel, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/SensorSocket/BroadcastWithStr`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(sensorSocketBroadCastModel, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketListClientsGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/SensorSocket/ListClients`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {SensorSocketSendCommandModel} [sensorSocketSendCommandModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketSendCommandPost: async (sensorSocketSendCommandModel?: SensorSocketSendCommandModel, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/SensorSocket/SendCommand`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(sensorSocketSendCommandModel, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {SensorSocketOperateModel} [sensorSocketOperateModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketTurnOffPost: async (sensorSocketOperateModel?: SensorSocketOperateModel, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/SensorSocket/TurnOff`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(sensorSocketOperateModel, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {SensorSocketOperateModel} [sensorSocketOperateModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketTurnOnPost: async (sensorSocketOperateModel?: SensorSocketOperateModel, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/SensorSocket/TurnOn`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(sensorSocketOperateModel, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * SensorSocketApi - functional programming interface
- * @export
- */
-export const SensorSocketApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = SensorSocketApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * @param {SensorSocketBroadCastModel} [sensorSocketBroadCastModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async sensorSocketBroadcastPost(sensorSocketBroadCastModel?: SensorSocketBroadCastModel, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.sensorSocketBroadcastPost(sensorSocketBroadCastModel, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {SensorSocketBroadCastModel} [sensorSocketBroadCastModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async sensorSocketBroadcastWithStrPost(sensorSocketBroadCastModel?: SensorSocketBroadCastModel, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.sensorSocketBroadcastWithStrPost(sensorSocketBroadCastModel, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async sensorSocketListClientsGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<string>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.sensorSocketListClientsGet(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {SensorSocketSendCommandModel} [sensorSocketSendCommandModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async sensorSocketSendCommandPost(sensorSocketSendCommandModel?: SensorSocketSendCommandModel, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.sensorSocketSendCommandPost(sensorSocketSendCommandModel, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {SensorSocketOperateModel} [sensorSocketOperateModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async sensorSocketTurnOffPost(sensorSocketOperateModel?: SensorSocketOperateModel, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.sensorSocketTurnOffPost(sensorSocketOperateModel, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {SensorSocketOperateModel} [sensorSocketOperateModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async sensorSocketTurnOnPost(sensorSocketOperateModel?: SensorSocketOperateModel, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.sensorSocketTurnOnPost(sensorSocketOperateModel, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-    }
-};
-
-/**
- * SensorSocketApi - factory interface
- * @export
- */
-export const SensorSocketApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = SensorSocketApiFp(configuration)
-    return {
-        /**
-         * 
-         * @param {SensorSocketBroadCastModel} [sensorSocketBroadCastModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketBroadcastPost(sensorSocketBroadCastModel?: SensorSocketBroadCastModel, options?: any): AxiosPromise<string> {
-            return localVarFp.sensorSocketBroadcastPost(sensorSocketBroadCastModel, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {SensorSocketBroadCastModel} [sensorSocketBroadCastModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketBroadcastWithStrPost(sensorSocketBroadCastModel?: SensorSocketBroadCastModel, options?: any): AxiosPromise<string> {
-            return localVarFp.sensorSocketBroadcastWithStrPost(sensorSocketBroadCastModel, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketListClientsGet(options?: any): AxiosPromise<Array<string>> {
-            return localVarFp.sensorSocketListClientsGet(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {SensorSocketSendCommandModel} [sensorSocketSendCommandModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketSendCommandPost(sensorSocketSendCommandModel?: SensorSocketSendCommandModel, options?: any): AxiosPromise<void> {
-            return localVarFp.sensorSocketSendCommandPost(sensorSocketSendCommandModel, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {SensorSocketOperateModel} [sensorSocketOperateModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketTurnOffPost(sensorSocketOperateModel?: SensorSocketOperateModel, options?: any): AxiosPromise<void> {
-            return localVarFp.sensorSocketTurnOffPost(sensorSocketOperateModel, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {SensorSocketOperateModel} [sensorSocketOperateModel] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        sensorSocketTurnOnPost(sensorSocketOperateModel?: SensorSocketOperateModel, options?: any): AxiosPromise<void> {
-            return localVarFp.sensorSocketTurnOnPost(sensorSocketOperateModel, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * Request parameters for sensorSocketBroadcastPost operation in SensorSocketApi.
- * @export
- * @interface SensorSocketApiSensorSocketBroadcastPostRequest
- */
-export interface SensorSocketApiSensorSocketBroadcastPostRequest {
-    /**
-     * 
-     * @type {SensorSocketBroadCastModel}
-     * @memberof SensorSocketApiSensorSocketBroadcastPost
-     */
-    readonly sensorSocketBroadCastModel?: SensorSocketBroadCastModel
-}
-
-/**
- * Request parameters for sensorSocketBroadcastWithStrPost operation in SensorSocketApi.
- * @export
- * @interface SensorSocketApiSensorSocketBroadcastWithStrPostRequest
- */
-export interface SensorSocketApiSensorSocketBroadcastWithStrPostRequest {
-    /**
-     * 
-     * @type {SensorSocketBroadCastModel}
-     * @memberof SensorSocketApiSensorSocketBroadcastWithStrPost
-     */
-    readonly sensorSocketBroadCastModel?: SensorSocketBroadCastModel
-}
-
-/**
- * Request parameters for sensorSocketSendCommandPost operation in SensorSocketApi.
- * @export
- * @interface SensorSocketApiSensorSocketSendCommandPostRequest
- */
-export interface SensorSocketApiSensorSocketSendCommandPostRequest {
-    /**
-     * 
-     * @type {SensorSocketSendCommandModel}
-     * @memberof SensorSocketApiSensorSocketSendCommandPost
-     */
-    readonly sensorSocketSendCommandModel?: SensorSocketSendCommandModel
-}
-
-/**
- * Request parameters for sensorSocketTurnOffPost operation in SensorSocketApi.
- * @export
- * @interface SensorSocketApiSensorSocketTurnOffPostRequest
- */
-export interface SensorSocketApiSensorSocketTurnOffPostRequest {
-    /**
-     * 
-     * @type {SensorSocketOperateModel}
-     * @memberof SensorSocketApiSensorSocketTurnOffPost
-     */
-    readonly sensorSocketOperateModel?: SensorSocketOperateModel
-}
-
-/**
- * Request parameters for sensorSocketTurnOnPost operation in SensorSocketApi.
- * @export
- * @interface SensorSocketApiSensorSocketTurnOnPostRequest
- */
-export interface SensorSocketApiSensorSocketTurnOnPostRequest {
-    /**
-     * 
-     * @type {SensorSocketOperateModel}
-     * @memberof SensorSocketApiSensorSocketTurnOnPost
-     */
-    readonly sensorSocketOperateModel?: SensorSocketOperateModel
-}
-
-/**
- * SensorSocketApi - object-oriented interface
- * @export
- * @class SensorSocketApi
- * @extends {BaseAPI}
- */
-export class SensorSocketApi extends BaseAPI {
-    /**
-     * 
-     * @param {SensorSocketApiSensorSocketBroadcastPostRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SensorSocketApi
-     */
-    public sensorSocketBroadcastPost(requestParameters: SensorSocketApiSensorSocketBroadcastPostRequest = {}, options?: AxiosRequestConfig) {
-        return SensorSocketApiFp(this.configuration).sensorSocketBroadcastPost(requestParameters.sensorSocketBroadCastModel, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {SensorSocketApiSensorSocketBroadcastWithStrPostRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SensorSocketApi
-     */
-    public sensorSocketBroadcastWithStrPost(requestParameters: SensorSocketApiSensorSocketBroadcastWithStrPostRequest = {}, options?: AxiosRequestConfig) {
-        return SensorSocketApiFp(this.configuration).sensorSocketBroadcastWithStrPost(requestParameters.sensorSocketBroadCastModel, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SensorSocketApi
-     */
-    public sensorSocketListClientsGet(options?: AxiosRequestConfig) {
-        return SensorSocketApiFp(this.configuration).sensorSocketListClientsGet(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {SensorSocketApiSensorSocketSendCommandPostRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SensorSocketApi
-     */
-    public sensorSocketSendCommandPost(requestParameters: SensorSocketApiSensorSocketSendCommandPostRequest = {}, options?: AxiosRequestConfig) {
-        return SensorSocketApiFp(this.configuration).sensorSocketSendCommandPost(requestParameters.sensorSocketSendCommandModel, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {SensorSocketApiSensorSocketTurnOffPostRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SensorSocketApi
-     */
-    public sensorSocketTurnOffPost(requestParameters: SensorSocketApiSensorSocketTurnOffPostRequest = {}, options?: AxiosRequestConfig) {
-        return SensorSocketApiFp(this.configuration).sensorSocketTurnOffPost(requestParameters.sensorSocketOperateModel, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {SensorSocketApiSensorSocketTurnOnPostRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SensorSocketApi
-     */
-    public sensorSocketTurnOnPost(requestParameters: SensorSocketApiSensorSocketTurnOnPostRequest = {}, options?: AxiosRequestConfig) {
-        return SensorSocketApiFp(this.configuration).sensorSocketTurnOnPost(requestParameters.sensorSocketOperateModel, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

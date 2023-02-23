@@ -75,6 +75,23 @@ const route = {
           ],
         },
         {
+          path: "/device",
+          name: "设备控制",
+          icon: <CrownFilled />,
+          routes: [
+            {
+              path: "/device/test",
+              name: "设备测试",
+              icon: <CrownFilled style={{ color: "#cf1322" }} />,
+            },
+            {
+              path: "/device/overview",
+              name: "设备概览",
+              icon: <CrownFilled style={{ color: "#cf1322" }} />,
+            },
+          ],
+        },
+        {
           path: "/material",
           name: "物料管理",
           icon: <CrownFilled />,
@@ -133,8 +150,8 @@ const route = {
       ],
     },
     {
-      path: "https://ant.design",
-      name: "Ant Design 官网外链",
+      path: "https://www.zy.com.cn/",
+      name: "中洋集团",
       icon: <ChromeFilled />,
     },
   ],
