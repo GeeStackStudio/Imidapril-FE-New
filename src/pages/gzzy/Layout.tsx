@@ -33,6 +33,7 @@ import { WorkloadCostPage } from "./WorkloadCost";
 import { CultureDetailPage } from "./CultureDetail";
 import { DeviceTestPage } from "./DeviceTest";
 import { DeviceOverviewPage } from "./DeviceOverview";
+import { WorkScheduleListPage } from "./Work/WorkList";
 export function LayoutPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -194,6 +195,11 @@ export function LayoutPage() {
               element={<WorkloadCostPage />}
             />
             <Route index path={"/work/manage"} element={<WorkloadCostPage />} />
+            <Route
+              index
+              path={"/work/list"}
+              element={<WorkScheduleListPage />}
+            />
             <Route index path={"/device/test"} element={<DeviceTestPage />} />
             <Route
               index

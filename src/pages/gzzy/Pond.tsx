@@ -24,7 +24,12 @@ import {
 import { AsString } from "../../utils/AsString";
 import { ToNumber } from "../../utils/ToNumber";
 import PondForm from "../../components/shared/Pond/PondForm";
-import { PageContainer, PageHeader, ProCard } from "@ant-design/pro-components";
+import {
+  PageContainer,
+  PageHeader,
+  ProCard,
+  ProForm,
+} from "@ant-design/pro-components";
 import PondGroupSelector from "../../components/shared/PondGroup/PondGroupSelector";
 import { useOpenApiFpRequest } from "../../Http/useOpenApiRequest";
 import { ConfirmAsync } from "../../utils/ConfirmAsync";
@@ -56,10 +61,7 @@ export function PondPage() {
         pi: params.current,
         ps: params.pageSize,
         pondGroupId,
-        type: "苗床",
-        variety:
-          breedSearchHook.data?.list?.find((i) => i.id === breedId)?.name ??
-          undefined,
+        type: "池塘",
         sorterKey: "name",
         sorterOrder: "Asc",
       }) as any,
@@ -109,26 +111,26 @@ export function PondPage() {
   return (
     <PageContainer>
       <ProCard style={{ marginBottom: 16 }}>
-        <Form layout={"inline"}>
-          <Form.Item label={"根据产线选择"}>
+        <ProForm layout={"inline"}>
+          <ProForm.Item label={"根据产线选择"}>
             <PondGroupSelector
               value={AsString(pondGroupId)}
               allowClear
               onChange={(v) => setPondGroupId(ToNumber(v))}
               placeholder={"请选择产线"}
             />
-          </Form.Item>
-          <Form.Item label={"选择生产品种"}>
-            <BreedSelector
-              type={BreedType.植物}
-              value={AsString(breedId)}
-              allowClear
-              onChange={(v) => setBreedId(ToNumber(v))}
-              style={{ width: 400 }}
-              placeholder="选择养殖品种"
-            />
-          </Form.Item>
-          <Form.Item>
+          </ProForm.Item>
+          {/*<Form.Item label={"选择生产品种"}>*/}
+          {/*  <BreedSelector*/}
+          {/*    type={BreedType.动物}*/}
+          {/*    value={AsString(breedId)}*/}
+          {/*    allowClear*/}
+          {/*    onChange={(v) => setBreedId(ToNumber(v))}*/}
+          {/*    style={{ width: 400 }}*/}
+          {/*    placeholder="选择养殖品种"*/}
+          {/*  />*/}
+          {/*</Form.Item>*/}
+          <ProForm.Item>
             <Button.Group>
               <Button
                 type="primary"
@@ -147,8 +149,8 @@ export function PondPage() {
                 新增
               </Button>
             </Button.Group>
-          </Form.Item>
-        </Form>
+          </ProForm.Item>
+        </ProForm>
       </ProCard>
       <ProCard bodyStyle={{ padding: 0 }}>
         <Table<PondDto> {...tableProps} rowKey={"id"} size={"small"}>
@@ -158,10 +160,10 @@ export function PondPage() {
             render={(_, row) => `${row.length}m * ${row.width}m `}
           />
           {/*<Table.Column<PondDto> title="水体" dataIndex="waterBody" />*/}
-          <Table.Column<PondDto>
-            title="生产品种"
-            dataIndex={["cultureInfo", "variety"]}
-          />
+          {/*<Table.Column<PondDto>*/}
+          {/*  title="生产品种"*/}
+          {/*  dataIndex={["cultureInfo", "variety"]}*/}
+          {/*/>*/}
           {/*<Table.Column<PondDto> title="本次生产时长" dataIndex={['cultureInfo', 'timePeriod']} />*/}
           {/*<Table.Column<PondDto> title="养殖尾数" dataIndex={['cultureInfo', 'count']} />*/}
           <Table.Column<PondDto>
@@ -183,7 +185,7 @@ export function PondPage() {
       </ProCard>
       <Modal
         open={isAdd.value}
-        title={"添加苗床"}
+        title={"添加池塘"}
         footer={null}
         onCancel={isAdd.setFalse}
       >
@@ -196,7 +198,7 @@ export function PondPage() {
       </Modal>
       <Modal
         open={!!selected}
-        title={"编辑苗床"}
+        title={"编辑池塘"}
         footer={null}
         onCancel={() => {
           setSelected(undefined);

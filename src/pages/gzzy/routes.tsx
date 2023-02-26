@@ -118,6 +118,11 @@ const route = {
               name: "工作安排",
               icon: <CrownFilled style={{ color: "#08979c" }} />,
             },
+            {
+              path: "/work/list",
+              name: "工作历史",
+              icon: <CrownFilled style={{ color: "#08979c" }} />,
+            },
           ],
         },
         {
@@ -125,11 +130,6 @@ const route = {
           name: "基础数据",
           icon: <CrownFilled />,
           routes: [
-            {
-              path: "/basic/seedbed",
-              name: "苗床管理",
-              icon: <CrownFilled style={{ color: "#c41d7f" }} />,
-            },
             {
               path: "/basic/pond",
               name: "池塘管理",

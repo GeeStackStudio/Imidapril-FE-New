@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function useAuth() {
   const [token, setToken] = useState<string>(
-    "1384365a-b94f-4536-ad77-db845a64428b"
+    "5244a3e1-f074-4952-b88c-68d9957bbcee"
   );
   return {
     token,

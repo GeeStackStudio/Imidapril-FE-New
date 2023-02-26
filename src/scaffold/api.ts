@@ -561,7 +561,8 @@ export const ControlDeviceType = {
     水流控制阀: '水流控制阀',
     灯: '灯',
     液氧阀: '液氧阀',
-    投饵机: '投饵机'
+    投饵机: '投饵机',
+    增氧机: '增氧机'
 } as const;
 
 export type ControlDeviceType = typeof ControlDeviceType[keyof typeof ControlDeviceType];
@@ -5168,12 +5169,6 @@ export interface Sensor {
      * @memberof Sensor
      */
     'conductivity'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Sensor
-     */
-    'valveAngle'?: number;
     /**
      * 
      * @type {string}
@@ -20356,6 +20351,212 @@ export class WaterAlertRuleApi extends BaseAPI {
      */
     public waterAlertRuleSearchGet(requestParameters: WaterAlertRuleApiWaterAlertRuleSearchGetRequest, options?: AxiosRequestConfig) {
         return WaterAlertRuleApiFp(this.configuration).waterAlertRuleSearchGet(requestParameters.pi, requestParameters.ps, requestParameters.cultureRuleId, requestParameters.sorterKey, requestParameters.sorterOrder, requestParameters.isDelete, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * WebSocketApi - axios parameter creator
+ * @export
+ */
+export const WebSocketApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        debugGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/debug`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        webSocketListClientsGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/WebSocket/ListClients`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        wsGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/ws`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * WebSocketApi - functional programming interface
+ * @export
+ */
+export const WebSocketApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = WebSocketApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async debugGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.debugGet(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async webSocketListClientsGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<string>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.webSocketListClientsGet(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async wsGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.wsGet(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * WebSocketApi - factory interface
+ * @export
+ */
+export const WebSocketApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = WebSocketApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        debugGet(options?: any): AxiosPromise<void> {
+            return localVarFp.debugGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        webSocketListClientsGet(options?: any): AxiosPromise<Array<string>> {
+            return localVarFp.webSocketListClientsGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        wsGet(options?: any): AxiosPromise<void> {
+            return localVarFp.wsGet(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * WebSocketApi - object-oriented interface
+ * @export
+ * @class WebSocketApi
+ * @extends {BaseAPI}
+ */
+export class WebSocketApi extends BaseAPI {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WebSocketApi
+     */
+    public debugGet(options?: AxiosRequestConfig) {
+        return WebSocketApiFp(this.configuration).debugGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WebSocketApi
+     */
+    public webSocketListClientsGet(options?: AxiosRequestConfig) {
+        return WebSocketApiFp(this.configuration).webSocketListClientsGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WebSocketApi
+     */
+    public wsGet(options?: AxiosRequestConfig) {
+        return WebSocketApiFp(this.configuration).wsGet(options).then((request) => request(this.axios, this.basePath));
     }
 }
 

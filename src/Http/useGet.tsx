@@ -43,7 +43,7 @@ export default function useGet<Params, Response>(
       setData(res.data);
       setLoading(false);
       return Promise.resolve(res.data);
-    } catch (e: Error) {
+    } catch (e: any) {
       setErrorMessage(e.message);
       setLoading(false);
       return Promise.reject(e);

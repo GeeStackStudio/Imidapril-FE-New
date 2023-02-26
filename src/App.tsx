@@ -13,9 +13,7 @@ import {
 import { onRequestFulfilled, onResponseReject } from "./utils/HttpInstance";
 import { Config } from "./config";
 import { ConfigProvider, message, theme } from "antd";
-import { AlertPage } from "./pages/gzzy/Alert";
 import { LayoutPage } from "./pages/gzzy/Layout";
-import { useMount } from "ahooks";
 
 function App() {
   return (
