@@ -18,6 +18,11 @@ const route = {
       icon: <SmileFilled />,
     },
     {
+      path: "/sensor/dashboard",
+      name: "环境大屏",
+      icon: <SmileFilled />,
+    },
+    {
       path: "/rule",
       name: "专家系统",
       icon: <CrownFilled />,

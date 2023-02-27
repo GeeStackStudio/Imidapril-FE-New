@@ -40,7 +40,7 @@ module.exports = {
         'react/prop-types': 0,
         'react/display-name': 0,
         "react/react-in-jsx-scope": "off",
-        "catch-error-name": "off",
+        "catch-error-name": "off"
     },
     settings: {
         react: {

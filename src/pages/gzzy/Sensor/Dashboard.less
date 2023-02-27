@@ -1,0 +1,251 @@
+@charset "utf-8";
+
+/* 滚动槽 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.08);
+}
+
+/* 滚动条滑块 */
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgb(5, 10, 20);
+
+
+  #video {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: fill;
+    z-index: 0;
+  }
+
+  @card-background: rgba(40, 40, 40, 0.6);
+
+
+  .ant-picker {
+    background: #333;
+    border-color: rgba(58, 166, 166, 0.9);
+  }
+
+  .ant-picker input {
+    color: white;
+  }
+
+  .ant-picker span {
+    color: white;
+  }
+
+  .ant-form-item label {
+    color: white;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    display: flex;
+    flex-direction: row;
+
+    h1 {
+      color: white;
+    }
+
+    .left {
+      width: 600px;
+    }
+
+    .middle {
+      width: 600px;
+    }
+
+    .right {
+      flex: 1;
+      //width: 600px;
+    }
+
+    .map-card {
+      flex-direction: column;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      padding: 8px;
+    }
+
+    .title-card {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-title {
+      background: @card-background;
+      display: flex;
+      align-items: center;
+      color: white;
+      height: 30px;
+      backdrop-filter: blur(0);
+
+      padding-left: 16px;
+      overflow: hidden;
+
+      .card-title-text {
+        z-index: 2;
+        font-weight: 800;
+        font-size: 16px;
+      }
+
+      .card-title-background {
+        background: rgba(58, 166, 166, 0.9);
+        position: absolute;
+        left: -96px;
+        top: -100px;
+        z-index: 1;
+        width: 300px;
+        height: 200px;
+        transform: rotate(20deg);
+      }
+
+      .card-title-background1 {
+        background: rgba(58, 166, 166, 0.9);
+        position: absolute;
+        left: 218px;
+        z-index: 1;
+        width: 10px;
+        height: 100px;
+        transform: rotate(20deg);
+      }
+
+      .card-title-background2 {
+        background: rgba(58, 166, 166, 0.6);
+        position: absolute;
+        left: 240px;
+        z-index: 1;
+        width: 10px;
+        height: 100px;
+        transform: rotate(20deg);
+      }
+
+      .card-title-background3 {
+        background: rgba(58, 166, 166, 0.2);
+        position: absolute;
+        left: 262px;
+        z-index: 1;
+        width: 10px;
+        height: 100px;
+        transform: rotate(20deg);
+      }
+    }
+
+    .cell {
+      //background: url("../../../assets/diamond.png");
+    }
+
+    .card {
+      background: @card-background;
+      backdrop-filter: blur(0);
+
+      display: flex;
+      align-items: center;
+      border-radius: 0 0 3px 3px;
+    }
+
+    .card + .card {
+      margin-top: 16px;
+    }
+
+    .card + .card-title {
+      margin-top: 16px;
+    }
+
+    .date {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 15px;
+
+      .date-divider {
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .date-text {
+        margin: 0 4px;
+      }
+    }
+
+    .time {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 2px;
+
+      .date-divider {
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .date-text {
+        margin: 0 4px;
+      }
+    }
+
+    .description-title {
+      font-size: 16px;
+    }
+
+    .description-content {
+      font-size: 22px;
+      //color: rgba(250, 167, 37, 0.8);
+
+      .description-content-suffix {
+        margin-left: 8px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    .card-sub-title {
+      margin-left: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .card-sub-title-prefix {
+        width: 16px;
+        height: 16px;
+        background: rgba(58, 166, 166, 0.6);
+        border: 1px solid rgba(58, 166, 166, 0.9);
+      }
+
+      .card-sub-title-text {
+        margin-left: 4px;
+      }
+    }
+  }
+}
+
+.TabLayoutTransparentDark {
+  .TabLayoutSidebar {
+    background: transparent;
+  }
+
+  color: whitesmoke;
+}

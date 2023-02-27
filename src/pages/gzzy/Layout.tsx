@@ -34,6 +34,7 @@ import { CultureDetailPage } from "./CultureDetail";
 import { DeviceTestPage } from "./DeviceTest";
 import { DeviceOverviewPage } from "./DeviceOverview";
 import { WorkScheduleListPage } from "./Work/WorkList";
+import SensorDashboardPage from "./Sensor/Dashboard";
 export function LayoutPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -205,6 +206,11 @@ export function LayoutPage() {
               index
               path={"/device/overview"}
               element={<DeviceOverviewPage />}
+            />
+            <Route
+              index
+              path={"/sensor/dashboard"}
+              element={<SensorDashboardPage />}
             />
           </Routes>
         </ProLayout>

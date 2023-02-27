@@ -175,7 +175,9 @@ export function DeviceTestPage() {
           <br />
           <Typography.Text>
             {JSON.stringify(
-              data.filter((i) => listClientsHook.data?.includes(i.SN!))
+              data
+                .filter((i) => listClientsHook.data?.includes(i.SN!))
+                .sort((a, b) => (a.code > b.code ? 1 : -1))
             )}
           </Typography.Text>
         </ProCard>
@@ -202,12 +204,24 @@ export function DeviceTestPage() {
             <ProFormText name="command" label={"命令"} />
           </ProForm>
         </ProCard>
-        <Affix offsetTop={80}>
+        <Affix
+          offsetTop={80}
+          style={{
+            height: 300,
+          }}
+        >
+          <Button
+            onClick={() => {
+              msgList.clear();
+            }}
+          >
+            清空
+          </Button>
           <ProCard
             style={{
-              marginLeft: 16,
               width: 600,
               height: 300,
+              marginLeft: 16,
               overflow: "auto",
             }}
             title={"实时日志"}
@@ -227,31 +241,205 @@ export function DeviceTestPage() {
         </Affix>
       </Flex>
       {data.map((i) => (
-        <ProCard key={i.code} style={{ marginTop: 16 }} title={i.code}>
+        <ProCard
+          key={i.code}
+          style={{ marginTop: 16, position: "relative", zIndex: 9 }}
+          title={i.code}
+        >
           <ProDescriptions>
             <ProDescriptions.Item label={"SN"}>{i.SN}</ProDescriptions.Item>
           </ProDescriptions>
-          <Button
-            style={{ marginRight: 8, marginBottom: 8 }}
-            type={"primary"}
-            onClick={() => {
-              sendCommandHook
-                .request({
-                  deviceSendCommandModel: {
-                    sn: i.SN,
-                    command: "0B0127E00020363A",
-                  },
-                })
-                .then((r) => {
-                  message.success("提交成功");
-                })
-                .catch((e) => {
-                  message.error(e.message);
-                });
-            }}
-          >
-            查询设备状态
-          </Button>
+          <Button.Group>
+            <Button
+              style={{ marginRight: 8, marginBottom: 8 }}
+              type={"primary"}
+              onClick={() => {
+                sendCommandHook
+                  .request({
+                    deviceSendCommandModel: {
+                      sn: i.SN,
+                      command: "060F0000000801FFFF33",
+                    },
+                  })
+                  .then((r) => {
+                    message.success("提交成功");
+                  })
+                  .catch((e) => {
+                    message.error(e.message);
+                  });
+              }}
+            >
+              打开全部电源
+            </Button>
+            <Button
+              style={{ marginRight: 8, marginBottom: 8 }}
+              type={"primary"}
+              onClick={() => {
+                sendCommandHook
+                  .request({
+                    deviceSendCommandModel: {
+                      sn: i.SN,
+                      command: "060f000000080100BF73",
+                    },
+                  })
+                  .then((r) => {
+                    message.success("提交成功");
+                  })
+                  .catch((e) => {
+                    message.error(e.message);
+                  });
+              }}
+            >
+              关闭全部电源
+            </Button>
+            <Button
+              style={{ marginRight: 8, marginBottom: 8 }}
+              type={"primary"}
+              onClick={() => {
+                sendCommandHook
+                  .request({
+                    deviceSendCommandModel: {
+                      sn: i.SN,
+                      command: "06050003FF007D8D",
+                    },
+                  })
+                  .then((r) => {
+                    message.success("提交成功");
+                  })
+                  .catch((e) => {
+                    message.error(e.message);
+                  });
+              }}
+            >
+              使用 DTU
+            </Button>
+            <Button
+              style={{ marginRight: 8, marginBottom: 8 }}
+              type={"primary"}
+              onClick={() => {
+                sendCommandHook
+                  .request({
+                    deviceSendCommandModel: {
+                      sn: i.SN,
+                      command: "0605000300003C7D",
+                    },
+                  })
+                  .then((r) => {
+                    message.success("提交成功");
+                  })
+                  .catch((e) => {
+                    message.error(e.message);
+                  });
+              }}
+            >
+              使用 LoRA
+            </Button>
+            <Button
+              style={{ marginRight: 8, marginBottom: 8 }}
+              type={"primary"}
+              onClick={() => {
+                sendCommandHook
+                  .request({
+                    deviceSendCommandModel: {
+                      sn: i.SN,
+                      command: "06050000FF008D8D",
+                    },
+                  })
+                  .then((r) => {
+                    message.success("提交成功");
+                  })
+                  .catch((e) => {
+                    message.error(e.message);
+                  });
+              }}
+            >
+              传感器供电
+            </Button>
+            <Button
+              style={{ marginRight: 8, marginBottom: 8 }}
+              type={"primary"}
+              onClick={() => {
+                sendCommandHook
+                  .request({
+                    deviceSendCommandModel: {
+                      sn: i.SN,
+                      command: "060500000000CC7D",
+                    },
+                  })
+                  .then((r) => {
+                    message.success("提交成功");
+                  })
+                  .catch((e) => {
+                    message.error(e.message);
+                  });
+              }}
+            >
+              传感器断电
+            </Button>
+            <Button
+              style={{ marginRight: 8, marginBottom: 8 }}
+              type={"primary"}
+              onClick={() => {
+                sendCommandHook
+                  .request({
+                    deviceSendCommandModel: {
+                      sn: i.SN,
+                      command: "06050001FF00DC4D",
+                    },
+                  })
+                  .then((r) => {
+                    message.success("提交成功");
+                  })
+                  .catch((e) => {
+                    message.error(e.message);
+                  });
+              }}
+            >
+              水泵通电
+            </Button>
+            <Button
+              style={{ marginRight: 8, marginBottom: 8 }}
+              type={"primary"}
+              onClick={() => {
+                sendCommandHook
+                  .request({
+                    deviceSendCommandModel: {
+                      sn: i.SN,
+                      command: "0605000100009DBD",
+                    },
+                  })
+                  .then((r) => {
+                    message.success("提交成功");
+                  })
+                  .catch((e) => {
+                    message.error(e.message);
+                  });
+              }}
+            >
+              水泵断电
+            </Button>
+            <Button
+              style={{ marginRight: 8, marginBottom: 8 }}
+              type={"primary"}
+              onClick={() => {
+                sendCommandHook
+                  .request({
+                    deviceSendCommandModel: {
+                      sn: i.SN,
+                      command: "0B0127E00020363A",
+                    },
+                  })
+                  .then((r) => {
+                    message.success("提交成功");
+                  })
+                  .catch((e) => {
+                    message.error(e.message);
+                  });
+              }}
+            >
+              查询设备状态
+            </Button>
+          </Button.Group>
           <br />
           {Array(16)
             .fill(0)

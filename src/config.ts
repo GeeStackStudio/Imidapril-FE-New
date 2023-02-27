@@ -7,8 +7,8 @@ export const Config = {
 };
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   // dev code
-  Config.basePath = "http://localhost:5002";
-  Config.wsHost = "localhost";
+  Config.basePath = "http://47.100.32.125:5002";
+  Config.wsHost = "47.100.32.125";
 } else {
   // production code
   Config.basePath = "http://47.100.32.125:5002";
