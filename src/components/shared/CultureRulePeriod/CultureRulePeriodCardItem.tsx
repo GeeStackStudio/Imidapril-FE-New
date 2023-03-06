@@ -4,6 +4,7 @@ import { Button, Typography } from "antd";
 import React from "react";
 import "./CultureRulePeriodCardItem.less";
 import { useBoolean } from "react-hanger";
+import { ProCard } from "@ant-design/pro-components";
 export function CultureRulePeriodCardItem(props: {
   item: { name?: string | null; description?: string | null };
   className?: string;
@@ -13,7 +14,8 @@ export function CultureRulePeriodCardItem(props: {
 }) {
   const isShowOperate = useBoolean(false);
   return (
-    <div
+    <ProCard
+      bodyStyle={{ padding: 0 }}
       className={`CultureRulePeriodCardItem ${props.className ?? ""}`}
       onMouseEnter={isShowOperate.setTrue}
       onMouseLeave={isShowOperate.setFalse}
@@ -21,10 +23,14 @@ export function CultureRulePeriodCardItem(props: {
     >
       <Flex direction={"row"} justify={"space-between"}>
         <Flex direction={"column"} className="item">
-          <Flex direction={"row"} align={"center"} style={{ flex: 1 }}>
+          <Flex
+            direction={"row"}
+            align={"center"}
+            style={{ flex: 1, height: 100, overflow: "hidden" }}
+          >
             <Typography.Text strong>{props.item.name}</Typography.Text>
             {isShowOperate.value && (
-              <div>
+              <Button.Group>
                 {props.onEditClick && (
                   <Button
                     size={"small"}
@@ -44,7 +50,7 @@ export function CultureRulePeriodCardItem(props: {
                     删除
                   </Button>
                 )}
-              </div>
+              </Button.Group>
             )}
           </Flex>
           <Typography.Text type={"secondary"}>
@@ -52,6 +58,6 @@ export function CultureRulePeriodCardItem(props: {
           </Typography.Text>
         </Flex>
       </Flex>
-    </div>
+    </ProCard>
   );
 }

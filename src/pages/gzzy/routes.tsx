@@ -26,21 +26,15 @@ const route = {
       path: "/rule",
       name: "专家系统",
       icon: <CrownFilled />,
-      access: "canAdmin",
       routes: [
         {
-          path: "/rule/sub-page1",
-          name: "一级页面",
+          path: "/rule/disease",
+          name: "病害规则",
           icon: "https://gw.alipayobjects.com/zos/antfincdn/upvrAjAPQX/Logo_Tech%252520UI.svg",
         },
         {
-          path: "/rule/sub-page2",
-          name: "二级页面",
-          icon: <CrownFilled />,
-        },
-        {
-          path: "/rule/sub-page3",
-          name: "三级页面",
+          path: "/rule/list",
+          name: "养殖规则",
           icon: <CrownFilled />,
         },
       ],

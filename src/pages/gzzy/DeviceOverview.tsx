@@ -5,11 +5,30 @@ import React, { useEffect, useMemo, useState } from "react";
 import { AsString } from "../../utils/AsString";
 import { ToNumber } from "../../utils/ToNumber";
 import { PageContainer, PageHeader } from "@ant-design/pro-components";
-import { DeviceApi, DeviceDto, PondApi } from "../../scaffold";
+import {
+  ControlCabinetApi,
+  DeviceApi,
+  DeviceDto,
+  PondApi,
+  SorterOrder,
+} from "../../scaffold";
 import { useOpenApiFpRequest } from "../../Http/useOpenApiRequest";
-import { Col, Form, Row, Spin, Switch, Table, Typography } from "antd";
+import { Col, Form, message, Row, Spin, Switch, Table, Typography } from "antd";
+import {
+  ControlDeviceCard,
+  DeviceControlItem,
+} from "../../components/shared/Device/ControlDeviceCard";
+import Flex from "../../components/shared/Flex";
 export function DeviceOverviewPage() {
   const [pondId, setPondId] = useState<number>();
+  const controlCabinetSearchHook = useOpenApiFpRequest(
+    ControlCabinetApi,
+    ControlCabinetApi.prototype.controlCabinetSearchGet
+  );
+  const deviceSearchHook = useOpenApiFpRequest(
+    DeviceApi,
+    DeviceApi.prototype.deviceSearchGet
+  );
   const pondFindHook = useOpenApiFpRequest(
     PondApi,
     PondApi.prototype.pondFindGet
@@ -18,11 +37,7 @@ export function DeviceOverviewPage() {
     PondApi,
     PondApi.prototype.pondSearchGet
   );
-  const deviceSearchHook = useOpenApiFpRequest(
-    DeviceApi,
-    DeviceApi.prototype.deviceSearchGet
-  );
-  useMount(() => {
+  async function refresh() {
     pondSearchHook
       .request({
         pi: 1,
@@ -33,6 +48,64 @@ export function DeviceOverviewPage() {
           setPondId(r.list[0].id);
         }
       });
+
+    controlCabinetSearchHook
+      .request({
+        pi: 1,
+        ps: 999,
+      })
+      .catch((e) => message.error(e.message));
+    deviceSearchHook
+      .request({
+        pi: 1,
+        ps: 999,
+        sorterKey: "position",
+        sorterOrder: SorterOrder.Asc,
+      })
+      .catch((e) => message.error(e.message));
+  }
+
+  const pondsWithControlDevices = useMemo(() => {
+    const res: Map<string, DeviceControlItem[]> = new Map<
+      string,
+      DeviceControlItem[]
+    >();
+    if (!deviceSearchHook.data?.list || !controlCabinetSearchHook.data?.list) {
+      return res;
+    }
+    for (const device of deviceSearchHook.data.list) {
+      const controlCabinet = controlCabinetSearchHook.data.list.find(
+        (i) => i.id === device.controlCabinetId
+      );
+      let isOn = false;
+      if (controlCabinet?.status && device.channel) {
+        isOn = controlCabinet?.status[device.channel - 1] === "1";
+      }
+      const str = controlCabinet?.status;
+      if (!device.position) {
+        continue;
+      }
+      if (res.has(device.position)) {
+        res.get(device.position)?.push({
+          device,
+          controlCabinet,
+          isOn,
+        });
+      } else {
+        res.set(device.position, [
+          {
+            device,
+            controlCabinet,
+            isOn,
+          },
+        ]);
+      }
+    }
+    return res;
+  }, [controlCabinetSearchHook.data, deviceSearchHook.data]);
+
+  useMount(() => {
+    refresh();
   });
   useEffect(() => {
     if (pondId) {
@@ -48,6 +121,11 @@ export function DeviceOverviewPage() {
           });
         })
         .catch(CommonApiErrorHandler);
+    } else {
+      deviceSearchHook.requestSync({
+        pi: 1,
+        ps: 999,
+      });
     }
   }, [pondId]);
   const oxygenDevices = useMemo(() => {
@@ -68,6 +146,7 @@ export function DeviceOverviewPage() {
               onChange={(v) => {
                 setPondId(ToNumber(v));
               }}
+              allowClear={true}
               placeholder={"请在此处选择一个池塘"}
             />
           </Form.Item>
@@ -76,38 +155,43 @@ export function DeviceOverviewPage() {
           spinning={deviceSearchHook.loading || pondFindHook.loading}
           tip={"加载中"}
         >
-          <Row gutter={32}>
-            <Col span={12}>
-              <Typography.Title level={5}>增氧设备</Typography.Title>
-              <Table<DeviceDto> dataSource={oxygenDevices} pagination={false}>
-                <Table.Column<DeviceDto> title="设备" dataIndex={["name"]} />
-                <Table.Column<DeviceDto>
-                  title="更新时间"
-                  dataIndex={["fetchedTime"]}
-                  render={(txt) => txt ?? "无"}
-                />
-                <Table.Column<DeviceDto>
-                  title="状态"
-                  render={(txt) => <Switch></Switch>}
-                />
-              </Table>
-            </Col>
-            <Col span={12}>
-              <Typography.Title level={5}>投饵机</Typography.Title>
-              <Table<DeviceDto> dataSource={feedDevices} pagination={false}>
-                <Table.Column<DeviceDto> title="设备" dataIndex={["name"]} />
-                <Table.Column<DeviceDto>
-                  title="更新时间"
-                  dataIndex={["fetchedTime"]}
-                  render={(txt) => txt ?? "无"}
-                />
-                <Table.Column<DeviceDto>
-                  title="状态"
-                  render={(txt) => <Switch></Switch>}
-                />
-              </Table>
-            </Col>
-          </Row>
+          <div>
+            {Array.from(pondsWithControlDevices.keys()).map((i) => (
+              <Flex
+                direction={"column"}
+                key={i}
+                style={{
+                  marginTop: 16,
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  paddingBottom: 8,
+                  padding: 32,
+                }}
+              >
+                <Flex direction={"column"} justify={"flex-start"}>
+                  <Typography.Title level={3}>{i}</Typography.Title>
+                </Flex>
+                <Flex wrap={"wrap"}>
+                  {pondsWithControlDevices
+                    .get(i)
+                    ?.sort((a, b) =>
+                      String(a?.device?.name) > String(b?.device?.name) ? 1 : -1
+                    )
+                    ?.map((item) => (
+                      <ControlDeviceCard
+                        key={item.device.id}
+                        item={item}
+                        style={{
+                          margin: 32,
+                          width: 200,
+                          height: 350,
+                        }}
+                      />
+                    ))}
+                </Flex>
+              </Flex>
+            ))}
+          </div>
         </Spin>
       </div>
     </PageContainer>

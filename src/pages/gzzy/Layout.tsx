@@ -35,6 +35,9 @@ import { DeviceTestPage } from "./DeviceTest";
 import { DeviceOverviewPage } from "./DeviceOverview";
 import { WorkScheduleListPage } from "./Work/WorkList";
 import SensorDashboardPage from "./Sensor/Dashboard";
+import { DiseaseRulePage } from "./Rule/diseaseRuleManage";
+import { CultureRulePage } from "./Rule/cultureRuleManageScreen";
+import { CultureRuleDetailPage } from "./Rule/cultureRuleDetailPage";
 export function LayoutPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -211,6 +214,18 @@ export function LayoutPage() {
               index
               path={"/sensor/dashboard"}
               element={<SensorDashboardPage />}
+            />
+            <Route
+              index
+              path={"/rule"}
+              element={<Navigate to={"/rule/disease"} />}
+            />
+            <Route index path={"/rule/disease"} element={<DiseaseRulePage />} />
+            <Route index path={"/rule/list"} element={<CultureRulePage />} />
+            <Route
+              index
+              path={"/rule/:id"}
+              element={<CultureRuleDetailPage />}
             />
           </Routes>
         </ProLayout>

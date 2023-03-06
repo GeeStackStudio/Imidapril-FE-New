@@ -554,6 +554,240 @@ export interface BriefListUserWorkloadResponseItemDto {
 /**
  * 
  * @export
+ * @interface ControlCabinet
+ */
+export interface ControlCabinet {
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinet
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinet
+     */
+    'sn'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinet
+     */
+    'status'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinet
+     */
+    'remark'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinet
+     */
+    'updatedTime'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinet
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinet
+     */
+    'createdTime'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinet
+     */
+    'deletedTime'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinet
+     */
+    'restoredTime'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ControlCabinet
+     */
+    'isDelete'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ControlCabinetDto
+ */
+export interface ControlCabinetDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetDto
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetDto
+     */
+    'createdTime'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetDto
+     */
+    'deletedTime'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetDto
+     */
+    'restoredTime'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ControlCabinetDto
+     */
+    'isDelete'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetDto
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetDto
+     */
+    'sn'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetDto
+     */
+    'status'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetDto
+     */
+    'remark'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetDto
+     */
+    'updatedTime'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface ControlCabinetDtoSearchResponseDto
+ */
+export interface ControlCabinetDtoSearchResponseDto {
+    /**
+     * 
+     * @type {Array<ControlCabinetDto>}
+     * @memberof ControlCabinetDtoSearchResponseDto
+     */
+    'list'?: Array<ControlCabinetDto> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetDtoSearchResponseDto
+     */
+    'total'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface ControlCabinetSaveParams
+ */
+export interface ControlCabinetSaveParams {
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetSaveParams
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetSaveParams
+     */
+    'sn': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetSaveParams
+     */
+    'remark'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetSaveParams
+     */
+    'id'?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ControlCabinetSaveParams
+     */
+    'isUpdate'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ControlCabinetSaveParams
+     */
+    'isAdd'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ControlCabinetTurnOffParams
+ */
+export interface ControlCabinetTurnOffParams {
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetTurnOffParams
+     */
+    'channel'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetTurnOffParams
+     */
+    'id': number;
+}
+/**
+ * 
+ * @export
+ * @interface ControlCabinetTurnOnParams
+ */
+export interface ControlCabinetTurnOnParams {
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetTurnOnParams
+     */
+    'channel'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetTurnOnParams
+     */
+    'id': number;
+}
+/**
+ * 
+ * @export
  * @enum {string}
  */
 
@@ -2800,7 +3034,7 @@ export interface Device {
      * @type {string}
      * @memberof Device
      */
-    'sn'?: string | null;
+    'position'?: string | null;
     /**
      * 
      * @type {string}
@@ -2813,6 +3047,24 @@ export interface Device {
      * @memberof Device
      */
     'alias'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Device
+     */
+    'channel'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Device
+     */
+    'controlCabinetId'?: number | null;
+    /**
+     * 
+     * @type {ControlCabinet}
+     * @memberof Device
+     */
+    'controlCabinet'?: ControlCabinet;
     /**
      * 
      * @type {DeviceType}
@@ -3403,7 +3655,7 @@ export interface DeviceDto {
      * @type {string}
      * @memberof DeviceDto
      */
-    'sn'?: string | null;
+    'position'?: string | null;
     /**
      * 
      * @type {string}
@@ -3472,6 +3724,12 @@ export interface DeviceDto {
     'sensorType'?: WaterQualityType;
     /**
      * 
+     * @type {number}
+     * @memberof DeviceDto
+     */
+    'controlCabinetId'?: number | null;
+    /**
+     * 
      * @type {DeviceType}
      * @memberof DeviceDto
      */
@@ -3490,10 +3748,22 @@ export interface DeviceDto {
     'alias'?: string | null;
     /**
      * 
+     * @type {number}
+     * @memberof DeviceDto
+     */
+    'channel'?: number | null;
+    /**
+     * 
      * @type {ControlDeviceType}
      * @memberof DeviceDto
      */
     'controlDeviceType'?: ControlDeviceType;
+    /**
+     * 
+     * @type {ControlCabinetDto}
+     * @memberof DeviceDto
+     */
+    'controlCabinet'?: ControlCabinetDto;
     /**
      * 
      * @type {SensorDeviceType}
@@ -3574,7 +3844,7 @@ export interface DeviceSaveParams {
      * @type {string}
      * @memberof DeviceSaveParams
      */
-    'sn'?: string | null;
+    'position'?: string | null;
     /**
      * 
      * @type {string}
@@ -3587,6 +3857,18 @@ export interface DeviceSaveParams {
      * @memberof DeviceSaveParams
      */
     'alias'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof DeviceSaveParams
+     */
+    'channel'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof DeviceSaveParams
+     */
+    'controlCabinetId'?: number;
     /**
      * 
      * @type {DeviceType}
@@ -5441,8 +5723,7 @@ export const SensorValueType = {
     浊度: '浊度',
     电导率: '电导率',
     盐度: '盐度',
-    水深: '水深',
-    电磁阀: '电磁阀'
+    水深: '水深'
 } as const;
 
 export type SensorValueType = typeof SensorValueType[keyof typeof SensorValueType];
@@ -9016,6 +9297,521 @@ export class BriefApi extends BaseAPI {
      */
     public briefListUserWorkLoadGet(requestParameters: BriefApiBriefListUserWorkLoadGetRequest = {}, options?: AxiosRequestConfig) {
         return BriefApiFp(this.configuration).briefListUserWorkLoadGet(requestParameters.from, requestParameters.to, requestParameters.cultureBatchId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * ControlCabinetApi - axios parameter creator
+ * @export
+ */
+export const ControlCabinetApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetFindGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('controlCabinetFindGet', 'id', id)
+            const localVarPath = `/ControlCabinet/Find`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (id !== undefined) {
+                localVarQueryParameter['Id'] = id;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {ControlCabinetSaveParams} [controlCabinetSaveParams] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetSavePost: async (controlCabinetSaveParams?: ControlCabinetSaveParams, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/ControlCabinet/Save`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(controlCabinetSaveParams, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {number} pi 
+         * @param {number} ps 
+         * @param {string} [keyword] 
+         * @param {number} [cultureBatchId] 
+         * @param {string} [sorterKey] 
+         * @param {SorterOrder} [sorterOrder] 
+         * @param {boolean} [isDelete] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetSearchGet: async (pi: number, ps: number, keyword?: string, cultureBatchId?: number, sorterKey?: string, sorterOrder?: SorterOrder, isDelete?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'pi' is not null or undefined
+            assertParamExists('controlCabinetSearchGet', 'pi', pi)
+            // verify required parameter 'ps' is not null or undefined
+            assertParamExists('controlCabinetSearchGet', 'ps', ps)
+            const localVarPath = `/ControlCabinet/Search`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (keyword !== undefined) {
+                localVarQueryParameter['Keyword'] = keyword;
+            }
+
+            if (cultureBatchId !== undefined) {
+                localVarQueryParameter['CultureBatchId'] = cultureBatchId;
+            }
+
+            if (pi !== undefined) {
+                localVarQueryParameter['Pi'] = pi;
+            }
+
+            if (ps !== undefined) {
+                localVarQueryParameter['Ps'] = ps;
+            }
+
+            if (sorterKey !== undefined) {
+                localVarQueryParameter['SorterKey'] = sorterKey;
+            }
+
+            if (sorterOrder !== undefined) {
+                localVarQueryParameter['SorterOrder'] = sorterOrder;
+            }
+
+            if (isDelete !== undefined) {
+                localVarQueryParameter['IsDelete'] = isDelete;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {ControlCabinetTurnOffParams} [controlCabinetTurnOffParams] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetTurnOffPost: async (controlCabinetTurnOffParams?: ControlCabinetTurnOffParams, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/ControlCabinet/TurnOff`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(controlCabinetTurnOffParams, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {ControlCabinetTurnOnParams} [controlCabinetTurnOnParams] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetTurnOnPost: async (controlCabinetTurnOnParams?: ControlCabinetTurnOnParams, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/ControlCabinet/TurnOn`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(controlCabinetTurnOnParams, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ControlCabinetApi - functional programming interface
+ * @export
+ */
+export const ControlCabinetApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ControlCabinetApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async controlCabinetFindGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ControlCabinetDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.controlCabinetFindGet(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {ControlCabinetSaveParams} [controlCabinetSaveParams] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async controlCabinetSavePost(controlCabinetSaveParams?: ControlCabinetSaveParams, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ControlCabinetDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.controlCabinetSavePost(controlCabinetSaveParams, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {number} pi 
+         * @param {number} ps 
+         * @param {string} [keyword] 
+         * @param {number} [cultureBatchId] 
+         * @param {string} [sorterKey] 
+         * @param {SorterOrder} [sorterOrder] 
+         * @param {boolean} [isDelete] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async controlCabinetSearchGet(pi: number, ps: number, keyword?: string, cultureBatchId?: number, sorterKey?: string, sorterOrder?: SorterOrder, isDelete?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ControlCabinetDtoSearchResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.controlCabinetSearchGet(pi, ps, keyword, cultureBatchId, sorterKey, sorterOrder, isDelete, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {ControlCabinetTurnOffParams} [controlCabinetTurnOffParams] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async controlCabinetTurnOffPost(controlCabinetTurnOffParams?: ControlCabinetTurnOffParams, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ControlCabinetDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.controlCabinetTurnOffPost(controlCabinetTurnOffParams, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {ControlCabinetTurnOnParams} [controlCabinetTurnOnParams] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async controlCabinetTurnOnPost(controlCabinetTurnOnParams?: ControlCabinetTurnOnParams, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ControlCabinetDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.controlCabinetTurnOnPost(controlCabinetTurnOnParams, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * ControlCabinetApi - factory interface
+ * @export
+ */
+export const ControlCabinetApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ControlCabinetApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {number} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetFindGet(id: number, options?: any): AxiosPromise<ControlCabinetDto> {
+            return localVarFp.controlCabinetFindGet(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ControlCabinetSaveParams} [controlCabinetSaveParams] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetSavePost(controlCabinetSaveParams?: ControlCabinetSaveParams, options?: any): AxiosPromise<ControlCabinetDto> {
+            return localVarFp.controlCabinetSavePost(controlCabinetSaveParams, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {number} pi 
+         * @param {number} ps 
+         * @param {string} [keyword] 
+         * @param {number} [cultureBatchId] 
+         * @param {string} [sorterKey] 
+         * @param {SorterOrder} [sorterOrder] 
+         * @param {boolean} [isDelete] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetSearchGet(pi: number, ps: number, keyword?: string, cultureBatchId?: number, sorterKey?: string, sorterOrder?: SorterOrder, isDelete?: boolean, options?: any): AxiosPromise<ControlCabinetDtoSearchResponseDto> {
+            return localVarFp.controlCabinetSearchGet(pi, ps, keyword, cultureBatchId, sorterKey, sorterOrder, isDelete, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ControlCabinetTurnOffParams} [controlCabinetTurnOffParams] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetTurnOffPost(controlCabinetTurnOffParams?: ControlCabinetTurnOffParams, options?: any): AxiosPromise<ControlCabinetDto> {
+            return localVarFp.controlCabinetTurnOffPost(controlCabinetTurnOffParams, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ControlCabinetTurnOnParams} [controlCabinetTurnOnParams] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        controlCabinetTurnOnPost(controlCabinetTurnOnParams?: ControlCabinetTurnOnParams, options?: any): AxiosPromise<ControlCabinetDto> {
+            return localVarFp.controlCabinetTurnOnPost(controlCabinetTurnOnParams, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * Request parameters for controlCabinetFindGet operation in ControlCabinetApi.
+ * @export
+ * @interface ControlCabinetApiControlCabinetFindGetRequest
+ */
+export interface ControlCabinetApiControlCabinetFindGetRequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetApiControlCabinetFindGet
+     */
+    readonly id: number
+}
+
+/**
+ * Request parameters for controlCabinetSavePost operation in ControlCabinetApi.
+ * @export
+ * @interface ControlCabinetApiControlCabinetSavePostRequest
+ */
+export interface ControlCabinetApiControlCabinetSavePostRequest {
+    /**
+     * 
+     * @type {ControlCabinetSaveParams}
+     * @memberof ControlCabinetApiControlCabinetSavePost
+     */
+    readonly controlCabinetSaveParams?: ControlCabinetSaveParams
+}
+
+/**
+ * Request parameters for controlCabinetSearchGet operation in ControlCabinetApi.
+ * @export
+ * @interface ControlCabinetApiControlCabinetSearchGetRequest
+ */
+export interface ControlCabinetApiControlCabinetSearchGetRequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetApiControlCabinetSearchGet
+     */
+    readonly pi: number
+
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetApiControlCabinetSearchGet
+     */
+    readonly ps: number
+
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetApiControlCabinetSearchGet
+     */
+    readonly keyword?: string
+
+    /**
+     * 
+     * @type {number}
+     * @memberof ControlCabinetApiControlCabinetSearchGet
+     */
+    readonly cultureBatchId?: number
+
+    /**
+     * 
+     * @type {string}
+     * @memberof ControlCabinetApiControlCabinetSearchGet
+     */
+    readonly sorterKey?: string
+
+    /**
+     * 
+     * @type {SorterOrder}
+     * @memberof ControlCabinetApiControlCabinetSearchGet
+     */
+    readonly sorterOrder?: SorterOrder
+
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ControlCabinetApiControlCabinetSearchGet
+     */
+    readonly isDelete?: boolean
+}
+
+/**
+ * Request parameters for controlCabinetTurnOffPost operation in ControlCabinetApi.
+ * @export
+ * @interface ControlCabinetApiControlCabinetTurnOffPostRequest
+ */
+export interface ControlCabinetApiControlCabinetTurnOffPostRequest {
+    /**
+     * 
+     * @type {ControlCabinetTurnOffParams}
+     * @memberof ControlCabinetApiControlCabinetTurnOffPost
+     */
+    readonly controlCabinetTurnOffParams?: ControlCabinetTurnOffParams
+}
+
+/**
+ * Request parameters for controlCabinetTurnOnPost operation in ControlCabinetApi.
+ * @export
+ * @interface ControlCabinetApiControlCabinetTurnOnPostRequest
+ */
+export interface ControlCabinetApiControlCabinetTurnOnPostRequest {
+    /**
+     * 
+     * @type {ControlCabinetTurnOnParams}
+     * @memberof ControlCabinetApiControlCabinetTurnOnPost
+     */
+    readonly controlCabinetTurnOnParams?: ControlCabinetTurnOnParams
+}
+
+/**
+ * ControlCabinetApi - object-oriented interface
+ * @export
+ * @class ControlCabinetApi
+ * @extends {BaseAPI}
+ */
+export class ControlCabinetApi extends BaseAPI {
+    /**
+     * 
+     * @param {ControlCabinetApiControlCabinetFindGetRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ControlCabinetApi
+     */
+    public controlCabinetFindGet(requestParameters: ControlCabinetApiControlCabinetFindGetRequest, options?: AxiosRequestConfig) {
+        return ControlCabinetApiFp(this.configuration).controlCabinetFindGet(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ControlCabinetApiControlCabinetSavePostRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ControlCabinetApi
+     */
+    public controlCabinetSavePost(requestParameters: ControlCabinetApiControlCabinetSavePostRequest = {}, options?: AxiosRequestConfig) {
+        return ControlCabinetApiFp(this.configuration).controlCabinetSavePost(requestParameters.controlCabinetSaveParams, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ControlCabinetApiControlCabinetSearchGetRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ControlCabinetApi
+     */
+    public controlCabinetSearchGet(requestParameters: ControlCabinetApiControlCabinetSearchGetRequest, options?: AxiosRequestConfig) {
+        return ControlCabinetApiFp(this.configuration).controlCabinetSearchGet(requestParameters.pi, requestParameters.ps, requestParameters.keyword, requestParameters.cultureBatchId, requestParameters.sorterKey, requestParameters.sorterOrder, requestParameters.isDelete, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ControlCabinetApiControlCabinetTurnOffPostRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ControlCabinetApi
+     */
+    public controlCabinetTurnOffPost(requestParameters: ControlCabinetApiControlCabinetTurnOffPostRequest = {}, options?: AxiosRequestConfig) {
+        return ControlCabinetApiFp(this.configuration).controlCabinetTurnOffPost(requestParameters.controlCabinetTurnOffParams, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ControlCabinetApiControlCabinetTurnOnPostRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ControlCabinetApi
+     */
+    public controlCabinetTurnOnPost(requestParameters: ControlCabinetApiControlCabinetTurnOnPostRequest = {}, options?: AxiosRequestConfig) {
+        return ControlCabinetApiFp(this.configuration).controlCabinetTurnOnPost(requestParameters.controlCabinetTurnOnParams, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
