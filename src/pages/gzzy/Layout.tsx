@@ -32,12 +32,14 @@ import { UserPage } from "./User";
 import { WorkloadCostPage } from "./WorkloadCost";
 import { CultureDetailPage } from "./CultureDetail";
 import { DeviceTestPage } from "./DeviceTest";
-import { DeviceOverviewPage } from "./DeviceOverview";
+import { DeviceOverviewPage } from "./Device/DeviceOverview";
 import { WorkScheduleListPage } from "./Work/WorkList";
 import SensorDashboardPage from "./Sensor/Dashboard";
 import { DiseaseRulePage } from "./Rule/diseaseRuleManage";
 import { CultureRulePage } from "./Rule/cultureRuleManageScreen";
 import { CultureRuleDetailPage } from "./Rule/cultureRuleDetailPage";
+import { SensorOverviewPage } from "./Sensor/Overview";
+import { WorkManagePage } from "./WorkManage";
 export function LayoutPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -198,13 +200,18 @@ export function LayoutPage() {
               path={"/work/workload"}
               element={<WorkloadCostPage />}
             />
-            <Route index path={"/work/manage"} element={<WorkloadCostPage />} />
+            <Route index path={"/work/manage"} element={<WorkManagePage />} />
             <Route
               index
               path={"/work/list"}
               element={<WorkScheduleListPage />}
             />
             <Route index path={"/device/test"} element={<DeviceTestPage />} />
+            <Route
+              index
+              path={"/sensor/overview"}
+              element={<SensorOverviewPage />}
+            />
             <Route
               index
               path={"/device/overview"}

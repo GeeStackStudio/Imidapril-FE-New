@@ -1,10 +1,8 @@
 import moment, { Moment } from "moment";
-import FullCalendar, {
-  CalendarApi,
-  EventClickArg,
-  EventInput,
-} from "@fullcalendar/react"; // must go before plugins
-import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
+import { Calendar } from "@fullcalendar/core";
+
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
 import zhLocale from "@fullcalendar/core/locales/zh-cn";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import React, {
@@ -20,9 +18,8 @@ import {
   WorkScheduleStatus,
 } from "../../../scaffold";
 import { useAxios } from "../../../Http/AxiosProvider";
-import { DateInput, Identity } from "@fullcalendar/common";
-import { MaterialCardDark } from "../MaterialCard/MaterialCardDark";
-import { Card } from "antd";
+import { CalendarApi, EventClickArg, EventInput } from "@fullcalendar/core";
+import { useMount } from "ahooks";
 export interface WorkScheduleCalenderRef {
   refresh?: () => any;
 }
@@ -40,6 +37,9 @@ export const WorkScheduleCalender = forwardRef(function WorkScheduleCalender(
 ) {
   const axios = useAxios();
   const calenderRef = useRef();
+  useMount(() => {
+    const name = Calendar.name;
+  });
   const events = useCallback(
     (
       info: any,

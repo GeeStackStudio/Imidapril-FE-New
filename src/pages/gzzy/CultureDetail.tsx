@@ -37,7 +37,12 @@ import { UnityContext } from "../../utils/UnityContext";
 import { CultureBatchTypeTag } from "../../components/shared/CultureBatch/CultureBatchTypeTag";
 import { CultureRuleDetailDateTimeline } from "../../components/shared/CultureRule/CultureRuleDetailDateTimeline";
 import { WorkScheduleDeathReportButton } from "../../components/shared/WorkSchedule/WorkScheduleDeathReportButton";
-import { PageContainer, PageHeader, ProCard } from "@ant-design/pro-components";
+import {
+  PageContainer,
+  PageHeader,
+  ProCard,
+  ProForm,
+} from "@ant-design/pro-components";
 import {
   Button,
   Col,
@@ -55,6 +60,10 @@ import {
   Typography,
 } from "antd";
 import { useMount } from "ahooks";
+import { AsString } from "../../utils/AsString";
+import { SensorStatisticCards } from "../../components/shared/Sensor/SensorStatisticCards";
+import SensorSelector from "../../components/shared/Sensor/SensorSelector";
+import { useFirstSensor } from "../../utils/useFirstSensor";
 
 type PageTab =
   | "Basic"
@@ -67,6 +76,7 @@ type PageTab =
   | "CultureLog";
 
 export function CultureDetailPage() {
+  const [sensorId, setSensorId] = useState<number>();
   const listRulePeriodHook = useOpenApiFpRequest(
     CultureRuleApi,
     CultureRuleApi.prototype.cultureRuleListPeriodGet
@@ -107,6 +117,7 @@ export function CultureDetailPage() {
   const isAutoCreate = useBoolean(false);
   const isManualCreate = useBoolean(false);
   const [id, setId] = useState<number>(Number(routeParams?.id));
+  const firstSensorHook = useFirstSensor();
   const [timeRange, setTimeRange] = useState<any>([
     moment(),
     moment().endOf("week"),
@@ -190,8 +201,10 @@ export function CultureDetailPage() {
       ]);
     });
   }, [periodIndex, listPondHook.data]);
-  useMount(() => {
+  useMount(async () => {
     refresh();
+    const item = await firstSensorHook.search();
+    item && setSensorId(item.id);
   });
 
   useEffect(() => {
@@ -358,7 +371,7 @@ export function CultureDetailPage() {
         {currentTab === "Basic" && (
           <div>
             <Row gutter={32}>
-              <Col span={8}>
+              <Col span={6}>
                 <Typography.Title level={4}>
                   {cultureName}基本信息
                 </Typography.Title>
@@ -396,6 +409,38 @@ export function CultureDetailPage() {
                   </Descriptions>
                 </ProCard>
               </Col>
+              <Col span={10}>
+                <div>
+                  <Flex
+                    direction={"row"}
+                    align="center"
+                    justify={"space-between"}
+                  >
+                    <Typography.Title level={4}>环境数据</Typography.Title>
+                    <ProForm
+                      submitter={false}
+                      layout="inline"
+                      style={{ marginTop: 16 }}
+                    >
+                      <ProForm.Item label={"选择传感器"}>
+                        <SensorSelector
+                          value={AsString(sensorId)}
+                          onChange={(v) => {
+                            v && setSensorId(Number(v));
+                          }}
+                          style={{ width: 120 }}
+                        />
+                      </ProForm.Item>
+                    </ProForm>
+                  </Flex>
+                  {sensorId && (
+                    <SensorStatisticCards
+                      style={{ height: 260 }}
+                      sensorId={sensorId}
+                    />
+                  )}
+                </div>
+              </Col>
               <Col span={8}>
                 <div>
                   <Typography.Title level={4}>
@@ -421,133 +466,6 @@ export function CultureDetailPage() {
                         />
                       ))}
                     </Steps>
-                  </ProCard>
-                </div>
-              </Col>
-              <Col span={8}>
-                <div>
-                  <Typography.Title level={4}>操作</Typography.Title>
-                  <ProCard
-                    style={{ overflow: "auto" }}
-                    bodyStyle={{ height: 260 }}
-                  >
-                    <Flex wrap={"wrap"}>
-                      <WorkScheduleSproutButton
-                        cultureBatchId={findHook.data?.id}
-                        onSuccess={() => refresh()}
-                      />
-                      <WorkSchedulePlantMeasureButton
-                        cultureBatchId={findHook.data?.id}
-                        onSuccess={() => refresh()}
-                      />
-                      <WorkScheduleDeathReportButton
-                        cultureBatchId={findHook.data?.id}
-                        onSuccess={() => refresh()}
-                      />
-                    </Flex>
-
-                    <Flex wrap={"wrap"}>
-                      <Flex
-                        justify={"space-between"}
-                        align={"center"}
-                        direction={"row"}
-                        style={{ padding: 12, width: 144 }}
-                      >
-                        <Typography.Text style={{ fontSize: 12 }}>
-                          喷淋系统
-                        </Typography.Text>
-                        <Switch
-                          onChange={(v) => {
-                            unity.sendMessage(
-                              "Scripts",
-                              "CameraToZheyangwangPos"
-                            );
-                            if (v) {
-                              unity.sendMessage("Scripts", "PenlinAllOn");
-                            } else {
-                              unity.sendMessage("Scripts", "PenlinAllOff");
-                            }
-                          }}
-                          checkedChildren="开启中"
-                          unCheckedChildren={"关闭中"}
-                        />
-                      </Flex>
-                      <Flex
-                        justify={"space-between"}
-                        align={"center"}
-                        direction={"row"}
-                        style={{ padding: 12, width: 144 }}
-                      >
-                        <Typography.Text style={{ fontSize: 12 }}>
-                          通风系统
-                        </Typography.Text>
-                        <Switch
-                          onChange={(v) => {
-                            unity.sendMessage(
-                              "Scripts",
-                              "NavigateWindControlSystem"
-                            );
-                            if (v) {
-                              for (let i = 1; i <= 14; i++) {
-                                unity.sendMessage("Scripts", "FS" + i + "Open");
-                              }
-                            } else {
-                              for (let i = 1; i <= 14; i++) {
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "FS" + i + "Close"
-                                );
-                              }
-                            }
-                          }}
-                          checkedChildren="开启中"
-                          unCheckedChildren={"关闭中"}
-                        />
-                      </Flex>
-                      <Flex
-                        justify={"space-between"}
-                        align={"center"}
-                        direction={"row"}
-                        style={{ padding: 12, width: 144 }}
-                      >
-                        <Typography.Text style={{ fontSize: 12 }}>
-                          光照系统
-                        </Typography.Text>
-                        <Switch
-                          onChange={(v) => {
-                            unity.sendMessage(
-                              "Scripts",
-                              "CameraToZheyangwangPos"
-                            );
-                            if (v) {
-                              for (let i = 1; i <= 3; i++) {
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "Zheyangwang" + i + "LOpen"
-                                );
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "Zheyangwang" + i + "ROpen"
-                                );
-                              }
-                            } else {
-                              for (let i = 1; i <= 3; i++) {
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "Zheyangwang" + i + "LClose"
-                                );
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "Zheyangwang" + i + "RClose"
-                                );
-                              }
-                            }
-                          }}
-                          checkedChildren="开启中"
-                          unCheckedChildren={"关闭中"}
-                        />
-                      </Flex>
-                    </Flex>
                   </ProCard>
                 </div>
               </Col>
@@ -598,6 +516,11 @@ export function CultureDetailPage() {
             </ProCard>
           </div>
         )}
+        {currentTab === "Work" && (
+          <ProCard>
+            <WorkScheduleCalender />
+          </ProCard>
+        )}
         {currentTab === "GrowInfo" && (
           <div>
             <Typography.Title level={4}>生长信息</Typography.Title>
@@ -622,7 +545,7 @@ export function CultureDetailPage() {
         open={isConfigurePeriod.value}
         onClose={isConfigurePeriod.setFalse}
         title="配置生产阶段"
-        width={800}
+        width={500}
       >
         <Flex direction="column" style={{ marginBottom: 8 }}>
           <Typography.Title level={4}>配置生产阶段</Typography.Title>
@@ -633,7 +556,7 @@ export function CultureDetailPage() {
           </Typography.Paragraph>
           <Typography.Paragraph>
             <Typography.Text>
-              当前生产阶段:{" "}
+              当前生产阶段:
               {currentPeriodHook.data?.cultureRulePeriod?.name ??
                 "尚未配置生产阶段"}
             </Typography.Text>

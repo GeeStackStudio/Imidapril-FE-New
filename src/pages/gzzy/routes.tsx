@@ -88,6 +88,11 @@ const route = {
               name: "设备概览",
               icon: <CrownFilled style={{ color: "#cf1322" }} />,
             },
+            {
+              path: "/sensor/overview",
+              name: "环境数据",
+              icon: <CrownFilled style={{ color: "#cf1322" }} />,
+            },
           ],
         },
         {

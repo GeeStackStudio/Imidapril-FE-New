@@ -41,7 +41,7 @@ export function ControlDeviceCard(props: {
     }
   }, [props.item]);
   const background = props.item.device.name?.includes("投饵机")
-    ? "linear-gradient(rgba(75,198,239), rgba(108,148,219,1)"
+    ? `linear-gradient(rgba(75,198,239), rgba(108,148,219,1)`
     : "linear-gradient(rgba(56,234,189), rgba(76,189,190))";
   const shadowColor = props.item.device.name?.includes("投饵机")
     ? "rgba(67,126,169,1)"
@@ -65,7 +65,7 @@ export function ControlDeviceCard(props: {
           width: 100,
           height: 30,
           borderBottomRightRadius: 14,
-          background: "#454545",
+          background: "rgba(33,33,33,0.55)",
           justifyContent: "center",
           fontWeight: 500,
         }}

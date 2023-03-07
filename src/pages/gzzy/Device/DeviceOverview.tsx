@@ -1,9 +1,9 @@
 import { useMount } from "ahooks";
-import CommonApiErrorHandler from "../../utils/HttpInstance";
-import PondSelector from "../../components/shared/Pond/PondSelector";
+import CommonApiErrorHandler from "../../../utils/HttpInstance";
+import PondSelector from "../../../components/shared/Pond/PondSelector";
 import React, { useEffect, useMemo, useState } from "react";
-import { AsString } from "../../utils/AsString";
-import { ToNumber } from "../../utils/ToNumber";
+import { AsString } from "../../../utils/AsString";
+import { ToNumber } from "../../../utils/ToNumber";
 import { PageContainer, PageHeader } from "@ant-design/pro-components";
 import {
   ControlCabinetApi,
@@ -11,14 +11,14 @@ import {
   DeviceDto,
   PondApi,
   SorterOrder,
-} from "../../scaffold";
-import { useOpenApiFpRequest } from "../../Http/useOpenApiRequest";
+} from "../../../scaffold";
+import { useOpenApiFpRequest } from "../../../Http/useOpenApiRequest";
 import { Col, Form, message, Row, Spin, Switch, Table, Typography } from "antd";
 import {
   ControlDeviceCard,
   DeviceControlItem,
-} from "../../components/shared/Device/ControlDeviceCard";
-import Flex from "../../components/shared/Flex";
+} from "../../../components/shared/Device/ControlDeviceCard";
+import Flex from "../../../components/shared/Flex";
 export function DeviceOverviewPage() {
   const [pondId, setPondId] = useState<number>();
   const controlCabinetSearchHook = useOpenApiFpRequest(
@@ -38,31 +38,21 @@ export function DeviceOverviewPage() {
     PondApi.prototype.pondSearchGet
   );
   async function refresh() {
-    pondSearchHook
-      .request({
-        pi: 1,
-        ps: 1,
-      })
-      .then((r) => {
-        if (r.list && (r.list?.length ?? 0) > 0) {
-          setPondId(r.list[0].id);
-        }
-      });
+    pondSearchHook.requestSync({
+      pi: 1,
+      ps: 1,
+    });
 
-    controlCabinetSearchHook
-      .request({
-        pi: 1,
-        ps: 999,
-      })
-      .catch((e) => message.error(e.message));
-    deviceSearchHook
-      .request({
-        pi: 1,
-        ps: 999,
-        sorterKey: "position",
-        sorterOrder: SorterOrder.Asc,
-      })
-      .catch((e) => message.error(e.message));
+    controlCabinetSearchHook.requestSync({
+      pi: 1,
+      ps: 999,
+    });
+    deviceSearchHook.requestSync({
+      pi: 1,
+      ps: 999,
+      sorterKey: "position",
+      sorterOrder: SorterOrder.Asc,
+    });
   }
 
   const pondsWithControlDevices = useMemo(() => {
@@ -161,11 +151,9 @@ export function DeviceOverviewPage() {
                 direction={"column"}
                 key={i}
                 style={{
-                  marginTop: 16,
                   borderRadius: 16,
                   overflow: "hidden",
                   paddingBottom: 8,
-                  padding: 32,
                 }}
               >
                 <Flex direction={"column"} justify={"flex-start"}>

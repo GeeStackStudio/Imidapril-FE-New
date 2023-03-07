@@ -186,6 +186,9 @@ export function CultureRuleDetailPage() {
           添加生产阶段
         </Button>
       }
+      onTabChange={(v) => {
+        setCurrentTab(v);
+      }}
       tabList={[
         {
           tab: "配置",
@@ -338,13 +341,11 @@ export function CultureRuleDetailPage() {
             />
           )}
           {currentPeriodId && findHook.data?.id && (
-            <ProCard style={{ marginLeft: 32 }}>
-              <Typography.Title level={4}>
-                {findPeriodHook.data?.name}
-              </Typography.Title>
-              <Typography.Text type={"secondary"}>
-                {findPeriodHook.data?.description}
-              </Typography.Text>
+            <ProCard
+              title={findPeriodHook.data?.name}
+              subTitle={findPeriodHook.data?.description}
+              style={{ marginLeft: 32 }}
+            >
               <CultureRuleDetailTimeCalender
                 width={"100%"}
                 style={{ marginTop: 32, flex: 1 }}
