@@ -37,7 +37,12 @@ import { UnityContext } from "../../utils/UnityContext";
 import { CultureBatchTypeTag } from "../../components/shared/CultureBatch/CultureBatchTypeTag";
 import { CultureRuleDetailDateTimeline } from "../../components/shared/CultureRule/CultureRuleDetailDateTimeline";
 import { WorkScheduleDeathReportButton } from "../../components/shared/WorkSchedule/WorkScheduleDeathReportButton";
-import { PageContainer, PageHeader, ProCard } from "@ant-design/pro-components";
+import {
+  PageContainer,
+  PageHeader,
+  ProCard,
+  ProForm,
+} from "@ant-design/pro-components";
 import {
   Button,
   Col,
@@ -55,6 +60,10 @@ import {
   Typography,
 } from "antd";
 import { useMount } from "ahooks";
+import { AsString } from "../../utils/AsString";
+import { SensorStatisticCards } from "../../components/shared/Sensor/SensorStatisticCards";
+import SensorSelector from "../../components/shared/Sensor/SensorSelector";
+import { useFirstSensor } from "../../utils/useFirstSensor";
 
 type PageTab =
   | "Basic"
@@ -67,6 +76,7 @@ type PageTab =
   | "CultureLog";
 
 export function CultureDetailPage() {
+  const [sensorId, setSensorId] = useState<number>();
   const listRulePeriodHook = useOpenApiFpRequest(
     CultureRuleApi,
     CultureRuleApi.prototype.cultureRuleListPeriodGet
@@ -99,6 +109,7 @@ export function CultureDetailPage() {
     CultureBatchApi,
     CultureBatchApi.prototype.cultureBatchFinishPost
   );
+  const firstSensorHook = useFirstSensor();
   const isAddWork = useBoolean(false);
   const [currentWork, setCurrentWork] = useState<WorkScheduleDto>();
   const [currentTab, setCurrentTab] = useState<PageTab>("Basic");
@@ -117,6 +128,7 @@ export function CultureDetailPage() {
   const [periodIndex, setPeriodIndex] = useState<number>();
   const unityIframe = useContext(UnityContext);
   const unity = useUnity(unityIframe.iframe);
+
   function refresh() {
     setKey(Math.random());
     console.log(calendar.current);
@@ -190,8 +202,10 @@ export function CultureDetailPage() {
       ]);
     });
   }, [periodIndex, listPondHook.data]);
-  useMount(() => {
+  useMount(async () => {
     refresh();
+    const item = await firstSensorHook.search();
+    item && setSensorId(item.id);
   });
 
   useEffect(() => {
@@ -396,6 +410,38 @@ export function CultureDetailPage() {
                   </Descriptions>
                 </ProCard>
               </Col>
+              <Col span={10}>
+                <div>
+                  <Flex
+                    direction={"row"}
+                    align="center"
+                    justify={"space-between"}
+                  >
+                    <Typography.Title level={4}>环境数据</Typography.Title>
+                    <ProForm
+                      submitter={false}
+                      layout="inline"
+                      style={{ marginTop: 16 }}
+                    >
+                      <ProForm.Item label={"选择传感器"}>
+                        <SensorSelector
+                          value={AsString(sensorId)}
+                          onChange={(v) => {
+                            v && setSensorId(Number(v));
+                          }}
+                          style={{ width: 120 }}
+                        />
+                      </ProForm.Item>
+                    </ProForm>
+                  </Flex>
+                  {sensorId && (
+                    <SensorStatisticCards
+                      style={{ height: 260 }}
+                      sensorId={sensorId}
+                    />
+                  )}
+                </div>
+              </Col>
               <Col span={8}>
                 <div>
                   <Typography.Title level={4}>
@@ -432,10 +478,10 @@ export function CultureDetailPage() {
                     bodyStyle={{ height: 260 }}
                   >
                     <Flex wrap={"wrap"}>
-                      {/*<WorkScheduleSproutButton*/}
-                      {/*  cultureBatchId={findHook.data?.id}*/}
-                      {/*  onSuccess={() => refresh()}*/}
-                      {/*/>*/}
+                      <WorkScheduleSproutButton
+                        cultureBatchId={findHook.data?.id}
+                        onSuccess={() => refresh()}
+                      />
                       <WorkSchedulePlantMeasureButton
                         cultureBatchId={findHook.data?.id}
                         onSuccess={() => refresh()}
@@ -598,6 +644,11 @@ export function CultureDetailPage() {
             </ProCard>
           </div>
         )}
+        {currentTab === "Work" && (
+          <ProCard>
+            <WorkScheduleCalender />
+          </ProCard>
+        )}
         {currentTab === "GrowInfo" && (
           <div>
             <Typography.Title level={4}>生长信息</Typography.Title>
@@ -622,7 +673,7 @@ export function CultureDetailPage() {
         open={isConfigurePeriod.value}
         onClose={isConfigurePeriod.setFalse}
         title="配置生产阶段"
-        width={800}
+        width={500}
       >
         <Flex direction="column" style={{ marginBottom: 8 }}>
           <Typography.Title level={4}>配置生产阶段</Typography.Title>
@@ -633,7 +684,7 @@ export function CultureDetailPage() {
           </Typography.Paragraph>
           <Typography.Paragraph>
             <Typography.Text>
-              当前生产阶段:{" "}
+              当前生产阶段:
               {currentPeriodHook.data?.cultureRulePeriod?.name ??
                 "尚未配置生产阶段"}
             </Typography.Text>

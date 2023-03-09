@@ -32,10 +32,15 @@ import { UserPage } from "./User";
 import { WorkloadCostPage } from "./WorkloadCost";
 import { CultureDetailPage } from "./CultureDetail";
 import { DeviceTestPage } from "./DeviceTest";
-import { DeviceOverviewPage } from "./DeviceOverview";
 import { WorkScheduleListPage } from "./Work/WorkList";
 import SensorDashboardPage from "./Sensor/Dashboard";
+import { DiseaseRulePage } from "./Rule/diseaseRuleManage";
+import { CultureRulePage } from "./Rule/cultureRuleManageScreen";
+import { CultureRuleDetailPage } from "./Rule/cultureRuleDetailPage";
+import { SensorOverviewPage } from "./Sensor/Overview";
+import { WorkManagePage } from "./WorkManage";
 import GzzyAppIndexPage from "./Dashboard/dashboard";
+import { DeviceOverviewPage } from "./Device/DeviceOverview";
 export function LayoutPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -206,6 +211,11 @@ export function LayoutPage() {
             <Route index path={"/device/test"} element={<DeviceTestPage />} />
             <Route
               index
+              path={"/sensor/overview"}
+              element={<SensorOverviewPage />}
+            />
+            <Route
+              index
               path={"/device/overview"}
               element={<DeviceOverviewPage />}
             />
@@ -213,6 +223,18 @@ export function LayoutPage() {
               index
               path={"/sensor/dashboard"}
               element={<SensorDashboardPage />}
+            />
+            <Route
+              index
+              path={"/rule"}
+              element={<Navigate to={"/rule/disease"} />}
+            />
+            <Route index path={"/rule/disease"} element={<DiseaseRulePage />} />
+            <Route index path={"/rule/list"} element={<CultureRulePage />} />
+            <Route
+              index
+              path={"/rule/:id"}
+              element={<CultureRuleDetailPage />}
             />
           </Routes>
         </ProLayout>

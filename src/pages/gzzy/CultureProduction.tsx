@@ -11,7 +11,7 @@ import {
   CultureBriefApi,
 } from "../../scaffold";
 import { useOpenApiFpRequest } from "../../Http/useOpenApiRequest";
-import {PageContainer, ProCard} from "@ant-design/pro-components";
+import { PageContainer, ProCard } from "@ant-design/pro-components";
 
 export function CultureProductionPage() {
   const searchHook = useOpenApiFpRequest(
@@ -51,7 +51,7 @@ export function CultureProductionPage() {
   }
   return (
     <PageContainer>
-      <ProCard bodyStyle={{ padding: 0 }} style={{ marginTop: 32 }}>
+      <ProCard bodyStyle={{ padding: 0 }}>
         <Table<CultureBatchDto> {...tableProps} rowKey={"id"}>
           <Table.Column<CultureBatchDto> title="养殖编号" dataIndex="code" />
           <Table.Column<CultureBatchDto>
@@ -93,7 +93,7 @@ export function CultureProductionPage() {
                   <Button
                     type={"link"}
                     onClick={() => {
-                      navigate("/visual/app/cultureBatch/detail/" + row.id);
+                      navigate("/culture/" + row.id);
                     }}
                   >
                     查看生产信息

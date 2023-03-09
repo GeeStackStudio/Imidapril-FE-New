@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import "./styles/app.less";
 import AxiosProvider from "./Http/AxiosProvider";

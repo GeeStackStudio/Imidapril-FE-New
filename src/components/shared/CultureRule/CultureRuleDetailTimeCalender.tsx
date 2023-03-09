@@ -10,6 +10,7 @@ import {
   Descriptions,
   Spin,
   Empty,
+  theme,
 } from "antd";
 import { useOpenApiFpRequest } from "../../../Http/useOpenApiRequest";
 import {
@@ -25,8 +26,7 @@ import {
   handleCultureRuleDetail,
   ICultureRuleDetailTimelineItem,
 } from "./CultureRuleDetailTimeline";
-import { MaterialCardDark } from "../MaterialCard/MaterialCardDark";
-
+import { ProCard } from "@ant-design/pro-components";
 export function CultureRuleDetailTimeCalender(props: {
   cultureRuleId?: number;
   width?: number | string;
@@ -35,6 +35,7 @@ export function CultureRuleDetailTimeCalender(props: {
   dateFrom?: number;
   dateTo?: number;
 }) {
+  const { token } = theme.useToken();
   const listCultureRuleDetailHook = useOpenApiFpRequest(
     CultureRuleDetailApi,
     CultureRuleDetailApi.prototype.cultureRuleDetailSearchGet
@@ -123,7 +124,7 @@ export function CultureRuleDetailTimeCalender(props: {
       >
         <Flex wrap={"wrap"} style={{ width: props.width }}>
           {dateArray.map((i, index) => (
-            <MaterialCardDark
+            <ProCard
               bodyStyle={{ padding: 4 }}
               key={i}
               style={{
@@ -140,19 +141,19 @@ export function CultureRuleDetailTimeCalender(props: {
                       key={`${index}-${innerIndex}-${i.id}`}
                       style={{
                         marginTop: 2,
-                        background: "rgb(11,114,185)",
-                        borderRadius: 6,
-                        paddingLeft: 8,
+                        background: token.colorPrimary,
+                        borderRadius: token.borderRadius,
+                        paddingLeft: token.padding,
                       }}
                     >
-                      <span style={{ fontWeight: 500 }}>
+                      <span style={{ fontWeight: 500, color: "#efefef" }}>
                         {`${i.isFullDay && "[全天]"}`} {i.name}
                       </span>
                     </div>
                   );
                 })}
               </Flex>
-            </MaterialCardDark>
+            </ProCard>
           ))}
         </Flex>
       </Spin>

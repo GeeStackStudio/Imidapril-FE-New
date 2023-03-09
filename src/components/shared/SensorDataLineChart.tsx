@@ -2,9 +2,12 @@ import { message } from "antd";
 import React, { useEffect, useRef } from "react";
 import { EChartOption } from "echarts";
 import ReactEcharts from "echarts-for-react";
-import { Moment } from "moment";
 import { SensorDataApi, SensorValueType } from "../../scaffold";
 import { useOpenApiFpRequest } from "../../Http/useOpenApiRequest";
+import { Dayjs } from "dayjs";
+import { theme } from "antd";
+import * as echarts from "echarts";
+import { lighten, setAlpha } from "@ant-design/pro-components";
 
 export const SensorDataLineChart = (props: {
   style?: React.CSSProperties;
@@ -12,13 +15,16 @@ export const SensorDataLineChart = (props: {
   unit: string;
   theme?: string;
   sensorId?: number;
-  timeRange?: Array<Moment>;
+  timeRange?: Array<Dayjs>;
 }) => {
+  const { token } = theme.useToken();
   const chart = useRef() as React.MutableRefObject<ReactEcharts>;
   const searchHook = useOpenApiFpRequest(
     SensorDataApi,
     SensorDataApi.prototype.sensorDataSearchGet
   );
+  console.log(token.colorPrimary);
+  console.log(lighten(token.colorPrimary, 20));
   useEffect(() => {
     searchHook
       .request({
@@ -34,7 +40,7 @@ export const SensorDataLineChart = (props: {
   }, [props.timeRange, props.sensorId]);
 
   const options: EChartOption = {
-    color: ["rgba(250, 167, 37,1)", "rgba(58, 166, 166,1)"],
+    color: [token.colorPrimary],
     backgroundColor: "",
     tooltip: {
       trigger: "axis",
@@ -58,6 +64,15 @@ export const SensorDataLineChart = (props: {
     yAxis: {
       type: "value",
     },
+    dataZoom: [
+      {
+        type: "inside",
+        start: 0,
+      },
+      {
+        start: 0,
+      },
+    ],
     series: [
       {
         data: searchHook.data?.list
@@ -65,6 +80,22 @@ export const SensorDataLineChart = (props: {
           .map((i) => Number(i.value).toFixed(1)),
         type: "line",
         smooth: true,
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: lighten(token.colorPrimary, 25),
+            },
+            {
+              offset: 0.6,
+              color: setAlpha(token.colorPrimary, 0.2),
+            },
+            {
+              offset: 1,
+              color: "rgba(255,255,255,0)",
+            },
+          ]),
+        },
         // stack: `${sensorIndex}号传感器`,
         // markPoint: {
         //   data: [

@@ -5,9 +5,6 @@ import {
   TabletFilled,
 } from "@ant-design/icons";
 import React from "react";
-import { LayoutPage } from "./Layout";
-import { AlertPage } from "./Alert";
-import { RouteContextType } from "@ant-design/pro-components";
 
 const route = {
   path: "/",
@@ -94,6 +91,11 @@ const route = {
               name: "设备概览",
               icon: <CrownFilled style={{ color: "#cf1322" }} />,
             },
+            {
+              path: "/sensor/overview",
+              name: "环境数据",
+              icon: <CrownFilled style={{ color: "#cf1322" }} />,
+            },
           ],
         },
         {
@@ -166,6 +168,7 @@ const route = {
     },
   ],
 };
+
 export const defaultProps = {
   route: route,
   location: {

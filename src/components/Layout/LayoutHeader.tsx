@@ -1,8 +1,5 @@
 import React from "react";
 import { Avatar, Button, Divider, Popover, Space, Typography } from "antd";
-import { DashboardOutlined, NotificationTwoTone } from "@ant-design/icons";
-import logo from "../../assets/logo-v.png";
-import useAuth from "../../utils/AuthContext";
 import MassaSelectableItem from "../shared/MassaSelectableItem";
 import useQuickRouter from "../../hooks/useQuickRouter";
 import Flex from "../shared/Flex";

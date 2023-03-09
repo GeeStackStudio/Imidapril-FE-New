@@ -11,6 +11,7 @@ import {
   Row,
   Space,
   Spin,
+  theme,
   Typography,
 } from "antd";
 import { CultureRuleDetailTimeline } from "../../components/shared/CultureRule/CultureRuleDetailTimeline";
@@ -35,6 +36,7 @@ import { useMount } from "ahooks";
 import { useBoolean } from "react-hanger";
 type ViewType = "list" | "calender";
 export function WorkManagePage() {
+  const { token } = theme.useToken();
   const isManualDispatch = useBoolean(false);
   const isAutoDispatch = useBoolean(false);
   const userSearchHook = useOpenApiFpRequest(
@@ -205,7 +207,7 @@ export function WorkManagePage() {
                 <MaterialCard>
                   <Progress
                     percent={63}
-                    strokeColor={"rgb(78,156,149)"}
+                    strokeColor={token.colorPrimary}
                     showInfo={true}
                     type={"circle"}
                   />
