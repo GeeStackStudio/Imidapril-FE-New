@@ -22,33 +22,33 @@ const route = {
       name: "环境大屏",
       icon: <SmileFilled />,
     },
-    {
-      path: "/rule",
-      name: "专家系统",
-      icon: <CrownFilled />,
-      access: "canAdmin",
-      routes: [
-        {
-          path: "/rule/sub-page1",
-          name: "一级页面",
-          icon: "https://gw.alipayobjects.com/zos/antfincdn/upvrAjAPQX/Logo_Tech%252520UI.svg",
-        },
-        {
-          path: "/rule/sub-page2",
-          name: "二级页面",
-          icon: <CrownFilled />,
-        },
-        {
-          path: "/rule/sub-page3",
-          name: "三级页面",
-          icon: <CrownFilled />,
-        },
-      ],
-    },
+    // {
+    //   path: "/rule",
+    //   name: "专家系统",
+    //   icon: <CrownFilled />,
+    //   access: "canAdmin",
+    //   routes: [
+    //     {
+    //       path: "/rule/sub-page1",
+    //       name: "一级页面",
+    //       icon: "https://gw.alipayobjects.com/zos/antfincdn/upvrAjAPQX/Logo_Tech%252520UI.svg",
+    //     },
+    //     {
+    //       path: "/rule/sub-page2",
+    //       name: "二级页面",
+    //       icon: <CrownFilled />,
+    //     },
+    //     {
+    //       path: "/rule/sub-page3",
+    //       name: "三级页面",
+    //       icon: <CrownFilled />,
+    //     },
+    //   ],
+    // },
     {
       name: "生产系统",
       icon: <TabletFilled />,
-      path: "/app",
+      path: "/culture/list",
       routes: [
         {
           path: "/culture",
@@ -157,6 +157,11 @@ const route = {
     {
       path: "https://www.zy.com.cn/",
       name: "中洋集团",
+      icon: <ChromeFilled />,
+    },
+    {
+      path: "http://218.205.28.229:5001/",
+      name: "蓝色粮仓",
       icon: <ChromeFilled />,
     },
   ],

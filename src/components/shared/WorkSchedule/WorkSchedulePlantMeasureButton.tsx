@@ -32,13 +32,13 @@ export function WorkSchedulePlantMeasureButton(props: {
       >
         <RiPencilRuler2Line style={{ color: "#fff" }} fontSize={30} />
         <Typography.Text style={{ marginLeft: 4, color: "#fff" }} strong>
-          测量株高
+          测量体长体重
         </Typography.Text>
       </Flex>
       <Modal
         open={isOperate.value}
         onCancel={isOperate.setFalse}
-        title="录入种苗信息"
+        title="录入信息"
         footer={null}
       >
         {props.cultureBatchId && (

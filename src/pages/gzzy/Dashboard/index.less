@@ -1,0 +1,65 @@
+.index-page {
+  position: fixed;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: #000a3b;
+  background: url("../../../assets/background.png");
+  background-size: cover;
+  color: whitesmoke;
+
+  .entry-item {
+    transition:  all 1s cubic-bezier(.17, .86, .73, .14);
+    &:hover {
+      //box-shadow: 1px 10px 10px #00123e;
+      transform: scale(1.4);
+      transform-origin: center;
+      transition:  all 2s cubic-bezier(.17, .86, .73, .14);
+      -moz-transition:  all 2s cubic-bezier(.17, .86, .73, .14);
+      -webkit-transition:  all 2s cubic-bezier(.17, .86, .73, .14);
+    }
+  }
+
+  .head {
+    color: #01c4f7
+  }
+
+  .title {
+    font-weight: 800;
+    font-size: 25px;
+    color: #01e2fc;
+    margin-top: -66px;
+    padding: 0;
+  }
+
+  .sub-title {
+    color: #04dbf8;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    margin-top: -6px;
+  }
+
+
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+.TabLayoutTransparentDark {
+  .TabLayoutSidebar {
+    background: transparent;
+  }
+
+  color: whitesmoke;
+}
+
+.TabLayoutHide {
+  .TabLayoutSidebar {
+    display: none;
+  }
+}

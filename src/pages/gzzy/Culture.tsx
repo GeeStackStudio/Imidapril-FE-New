@@ -50,7 +50,7 @@ export function CulturePage() {
   });
   return (
     <PageContainer>
-      <Flex direction={"column"} style={{ width: 1600, margin: "auto" }}>
+      <Flex direction={"column"} style={{ margin: "auto" }}>
         <Flex style={{ width: "100%" }} direction={"row"}>
           <ProCard style={{ borderRadius: 3, width: 376 }}>
             <Flex direction="row" align={"center"} justify={"space-between"}>
@@ -152,6 +152,14 @@ export function CulturePage() {
               title="进行中养殖任务"
               subTitle={"查看并管理进行中的养殖任务"}
             >
+              <Button
+                type="primary"
+                onClick={() => {
+                  isAdd.setTrue();
+                }}
+              >
+                开始新养殖计划
+              </Button>
               <CultureBatchTableCtrl
                 onClickDetail={(row) => navigate("/culture/" + row.id)}
                 style={{ marginTop: 16 }}
@@ -194,7 +202,11 @@ export function CulturePage() {
         onCancel={isAdd.setFalse}
         footer={null}
       >
-        <CultureBatchForm />
+        <CultureBatchForm
+          onSuccess={(row) => {
+            navigate("/cultureDetail/" + row?.id);
+          }}
+        />
       </Modal>
     </PageContainer>
   );

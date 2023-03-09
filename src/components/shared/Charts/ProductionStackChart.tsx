@@ -2,7 +2,98 @@ import { Column } from "@ant-design/plots";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { ColumnConfig } from "@ant-design/charts";
-
+const json = [
+  {
+    year: "01-01",
+    value: 3,
+    type: "一号池塘",
+  },
+  {
+    year: "01-02",
+    value: 4,
+    type: "一号池塘",
+  },
+  {
+    year: "01-03",
+    value: 3.5,
+    type: "一号池塘",
+  },
+  {
+    year: "01-04",
+    value: 5,
+    type: "一号池塘",
+  },
+  {
+    year: "01-05",
+    value: 4.9,
+    type: "一号池塘",
+  },
+  {
+    year: "01-06",
+    value: 6,
+    type: "一号池塘",
+  },
+  {
+    year: "01-07",
+    value: 7,
+    type: "一号池塘",
+  },
+  {
+    year: "01-08",
+    value: 9,
+    type: "一号池塘",
+  },
+  {
+    year: "01-09",
+    value: 13,
+    type: "一号池塘",
+  },
+  {
+    year: "01-01",
+    value: 3,
+    type: "二号池塘",
+  },
+  {
+    year: "01-02",
+    value: 4,
+    type: "二号池塘",
+  },
+  {
+    year: "01-03",
+    value: 3.5,
+    type: "二号池塘",
+  },
+  {
+    year: "01-04",
+    value: 5,
+    type: "二号池塘",
+  },
+  {
+    year: "01-05",
+    value: 4.9,
+    type: "二号池塘",
+  },
+  {
+    year: "01-06",
+    value: 6,
+    type: "二号池塘",
+  },
+  {
+    year: "01-07",
+    value: 7,
+    type: "二号池塘",
+  },
+  {
+    year: "01-08",
+    value: 9,
+    type: "二号池塘",
+  },
+  {
+    year: "01-09",
+    value: 13,
+    type: "二号池塘",
+  },
+];
 export function ProductionStackChart() {
   const [data, setData] = useState([]);
 
@@ -11,14 +102,7 @@ export function ProductionStackChart() {
   }, []);
 
   const asyncFetch = () => {
-    fetch(
-      "https://gw.alipayobjects.com/os/antfincdn/8elHX%26irfq/stack-column-data.json"
-    )
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => {
-        console.log("fetch data failed", error);
-      });
+    setData(json as any);
   };
   const config: ColumnConfig = {
     data,

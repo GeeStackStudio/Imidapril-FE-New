@@ -35,6 +35,7 @@ import { DeviceTestPage } from "./DeviceTest";
 import { DeviceOverviewPage } from "./DeviceOverview";
 import { WorkScheduleListPage } from "./Work/WorkList";
 import SensorDashboardPage from "./Sensor/Dashboard";
+import GzzyAppIndexPage from "./Dashboard/dashboard";
 export function LayoutPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -152,8 +153,8 @@ export function LayoutPage() {
                   paddingBlockStart: 12,
                 }}
               >
-                <div>© 2021 Made with love</div>
-                <div>by Ant Design</div>
+                {/*<div>© 2021 Made with love</div>*/}
+                <div>by GeeStack Inc</div>
               </div>
             );
           }}
@@ -170,7 +171,8 @@ export function LayoutPage() {
           {...settings}
         >
           <Routes>
-            <Route path={"/app"} element={<Navigate to={"/culture/list"} />} />
+            <Route path={"/"} element={<Navigate to={"/gzzy"} />} />
+            <Route path={"/gzzy"} element={<GzzyAppIndexPage />} />
             <Route path={"/alert"} element={<AlertPage />} />
             <Route index path={"/culture/list"} element={<CulturePage />} />
             <Route path={"/culture/:id"} element={<CultureDetailPage />} />

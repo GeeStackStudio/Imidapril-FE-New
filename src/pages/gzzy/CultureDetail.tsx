@@ -237,7 +237,7 @@ export function CultureDetailPage() {
   }, [timeRange, currentPeriodHook.data]);
 
   const fryName = useMemo(() => {
-    return "种苗";
+    return "放苗";
   }, [findHook.data]);
   const cultureName = useMemo(() => {
     return "生产";
@@ -432,10 +432,10 @@ export function CultureDetailPage() {
                     bodyStyle={{ height: 260 }}
                   >
                     <Flex wrap={"wrap"}>
-                      <WorkScheduleSproutButton
-                        cultureBatchId={findHook.data?.id}
-                        onSuccess={() => refresh()}
-                      />
+                      {/*<WorkScheduleSproutButton*/}
+                      {/*  cultureBatchId={findHook.data?.id}*/}
+                      {/*  onSuccess={() => refresh()}*/}
+                      {/*/>*/}
                       <WorkSchedulePlantMeasureButton
                         cultureBatchId={findHook.data?.id}
                         onSuccess={() => refresh()}
