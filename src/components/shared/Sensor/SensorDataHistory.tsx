@@ -1,11 +1,11 @@
 import { ProForm, StatisticCard } from "@ant-design/pro-components";
-import { DatePicker, Tabs } from "antd";
-import * as dayjs from "dayjs";
-import { SensorDataLineChart } from "../SensorDataLineChart";
-import { WaterQualityType } from "../../../scaffold";
+import { DatePicker, Tabs, theme } from "antd";
 import React, { useState } from "react";
-
+import dayjs from "dayjs";
+import { WaterQualityType } from "../../../scaffold";
+import { SensorDataLineChart } from "../SensorDataLineChart";
 export function SensorDataHistory(props: { sensorId: number }) {
+  const { token } = theme.useToken();
   const [dateRange, setDateRange] = useState<[dayjs.Dayjs, dayjs.Dayjs]>([
     dayjs().subtract(3, "day"),
     dayjs(),
@@ -18,8 +18,7 @@ export function SensorDataHistory(props: { sensorId: number }) {
             <DatePicker.RangePicker
               value={dateRange}
               onChange={(date, dateString) => {
-                console.log(date, dateString);
-                date && setDateRange([dayjs(date[0]), dayjs(date[1])]);
+                setDateRange(date as [dayjs.Dayjs, dayjs.Dayjs]);
               }}
               allowClear={false}
             />
@@ -51,6 +50,7 @@ export function SensorDataHistory(props: { sensorId: number }) {
                 sensorId={props.sensorId}
                 timeRange={dateRange}
                 unit={""}
+                theme={"dark"}
               />
             </Tabs.TabPane>
             <Tabs.TabPane tab="溶解氧" key="溶解氧">

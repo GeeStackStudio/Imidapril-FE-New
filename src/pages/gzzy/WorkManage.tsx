@@ -27,13 +27,13 @@ import { CultureBatchApi, UserApi, WorkScheduleApi } from "../../scaffold";
 import WorkScheduleForm from "../../components/shared/WorkSchedule/WorkScheduleForm";
 import { AsString } from "../../utils/AsString";
 import UserAvatar from "../../components/User/UserAvatar";
-import moment, { Moment } from "moment";
 import { useOpenApiFpRequest } from "../../Http/useOpenApiRequest";
 import { MaterialCard } from "../../components/shared/MaterialCard/MaterialCard";
 import Flex from "../../components/shared/Flex";
 import { PageContainer, ProCard } from "@ant-design/pro-components";
 import { useMount } from "ahooks";
 import { useBoolean } from "react-hanger";
+import dayjs from "dayjs";
 type ViewType = "list" | "calender";
 export function WorkManagePage() {
   const { token } = theme.useToken();
@@ -47,9 +47,9 @@ export function WorkManagePage() {
   const tableRef =
     useRef<IWorkScheduleTodayTableRef>() as MutableRefObject<IWorkScheduleTodayTableRef>;
 
-  const [timeRange, setTimeRange] = useState<any>([
-    moment(),
-    moment().endOf("week"),
+  const [timeRange, setTimeRange] = useState<[dayjs.Dayjs, dayjs.Dayjs]>([
+    dayjs(),
+    dayjs().endOf("week"),
   ]);
   const [cultureBatchId, setCultureBatchId] = useState<number>();
   const findHook = useOpenApiFpRequest(
@@ -81,22 +81,18 @@ export function WorkManagePage() {
     }
   }, [cultureBatchId, timeRange]);
   const dateFrom = useMemo(() => {
-    const localTimeRange = timeRange as Moment[];
-    if (timeRange.length == 0 && !currentPeriodHook.data?.startTime) {
-      return undefined;
-    }
-    return (timeRange[0] as Moment).diff(
-      moment(currentPeriodHook.data?.startTime),
+    return (timeRange[0] as dayjs.Dayjs).diff(
+      dayjs(currentPeriodHook.data?.startTime),
       "days"
     );
   }, [timeRange, currentPeriodHook.data]);
   const dateTo = useMemo(() => {
-    const localTimeRange = timeRange as Moment[];
+    const localTimeRange = timeRange as dayjs.Dayjs[];
     if (timeRange.length < 2 && !currentPeriodHook.data?.startTime) {
       return undefined;
     }
-    return (timeRange[1] as Moment).diff(
-      moment(currentPeriodHook.data?.startTime),
+    return (timeRange[1] as dayjs.Dayjs).diff(
+      dayjs(currentPeriodHook.data?.startTime),
       "days"
     );
   }, [timeRange, currentPeriodHook.data]);
@@ -299,7 +295,7 @@ export function WorkManagePage() {
               <DatePicker.RangePicker
                 allowClear={false}
                 value={timeRange}
-                onChange={setTimeRange}
+                onChange={(v) => setTimeRange(v as [dayjs.Dayjs, dayjs.Dayjs])}
               />
             </Form.Item>
             <Form.Item>

@@ -1,5 +1,5 @@
 import { ProCard, ProForm, StatisticCard } from "@ant-design/pro-components";
-import { DatePicker, Tabs } from "antd";
+import { DatePicker, Tabs, Typography } from "antd";
 import * as dayjs from "dayjs";
 import { SensorDataLineChart } from "../SensorDataLineChart";
 import { SensorApi, WaterQualityType } from "../../../scaffold";

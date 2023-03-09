@@ -13,12 +13,33 @@ import { onRequestFulfilled, onResponseReject } from "./utils/HttpInstance";
 import { Config } from "./config";
 import { ConfigProvider, message, theme } from "antd";
 import { LayoutPage } from "./pages/gzzy/Layout";
+import { useBoolean } from "react-hanger";
+import { useMount } from "ahooks";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  useMount(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setIsDarkMode(true);
+    } else {
+      setIsDarkMode(false);
+    }
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (event) => {
+        if (event.matches) {
+          console.log("dark mode");
+          setIsDarkMode(true);
+        } else {
+          console.log("light mode");
+          setIsDarkMode(false);
+        }
+      });
+  });
   return (
     <ConfigProvider
       theme={{
-        algorithm: theme.defaultAlgorithm,
+        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
       }}
     >
       <AxiosProvider

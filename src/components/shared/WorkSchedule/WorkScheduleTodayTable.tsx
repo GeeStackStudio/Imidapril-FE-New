@@ -13,7 +13,6 @@ import { WorkScheduleTypeTag } from "./WorkScheduleTypeTag";
 import { WorkScheduleStatusTag } from "./WorkScheduleStatusTag";
 import { WorkScheduleScheduleTime } from "./WorkScheduleScheduleTime";
 import UserAvatar from "../../User/UserAvatar";
-import { CalendarApi } from "@fullcalendar/react";
 import { ITableRef } from "../ITableRef";
 export type IWorkScheduleTodayTableRef = ITableRef;
 export const WorkScheduleTodayTable = forwardRef(
