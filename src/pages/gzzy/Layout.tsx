@@ -12,7 +12,7 @@ import {
 import type { ProSettings } from "@ant-design/pro-components";
 import { PageContainer, ProLayout, ProCard } from "@ant-design/pro-components";
 import { Alert, Button, Input, Space, Typography } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { defaultProps } from "./routes";
 import { AlertPage } from "./Alert";
 import {
@@ -50,6 +50,10 @@ export function LayoutPage() {
   };
 
   const [pathname, setPathname] = useState(location.pathname);
+  console.log(pathname);
+  useEffect(() => {
+    setPathname(location.pathname);
+  }, [location.pathname]);
 
   return (
     <>
@@ -101,7 +105,7 @@ export function LayoutPage() {
           avatarProps={{
             src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
             size: "small",
-            title: "七妮妮",
+            title: "Yang",
           }}
           actionsRender={(props) => {
             if (props.isMobile) return [];
@@ -179,63 +183,40 @@ export function LayoutPage() {
             <Route path={"/"} element={<Navigate to={"/gzzy"} />} />
             <Route path={"/gzzy"} element={<GzzyAppIndexPage />} />
             <Route path={"/alert"} element={<AlertPage />} />
-            <Route index path={"/culture/list"} element={<CulturePage />} />
+            <Route
+              path={"/culture"}
+              element={<Navigate to="/culture/list" />}
+            />
+            <Route path={"/culture/list"} element={<CulturePage />} />
             <Route path={"/culture/:id"} element={<CultureDetailPage />} />
             <Route
-              index
               path={"/culture/production"}
               element={<CultureProductionPage />}
             />
             <Route
-              index
               path={"/material/consume"}
               element={<MaterialConsumePage />}
             />
             {/*基础数据*/}
-            <Route index path={"/basic/breed"} element={<BreedPage />} />
-            <Route index path={"/basic/seedbed"} element={<SeedbedPage />} />
-            <Route index path={"/basic/pond"} element={<PondPage />} />
-            <Route index path={"/basic/user"} element={<UserPage />} />
+            <Route path={"/basic/breed"} element={<BreedPage />} />
+            <Route path={"/basic/seedbed"} element={<SeedbedPage />} />
+            <Route path={"/basic/pond"} element={<PondPage />} />
+            <Route path={"/basic/user"} element={<UserPage />} />
             {/*工作安排*/}
+            <Route path={"/work/workload"} element={<WorkloadCostPage />} />
+            <Route path={"/work/manage"} element={<WorkloadCostPage />} />
+            <Route path={"/work/list"} element={<WorkScheduleListPage />} />
+            <Route path={"/device/test"} element={<DeviceTestPage />} />
+            <Route path={"/sensor/overview"} element={<SensorOverviewPage />} />
+            <Route path={"/device/overview"} element={<DeviceOverviewPage />} />
             <Route
-              index
-              path={"/work/workload"}
-              element={<WorkloadCostPage />}
-            />
-            <Route index path={"/work/manage"} element={<WorkloadCostPage />} />
-            <Route
-              index
-              path={"/work/list"}
-              element={<WorkScheduleListPage />}
-            />
-            <Route index path={"/device/test"} element={<DeviceTestPage />} />
-            <Route
-              index
-              path={"/sensor/overview"}
-              element={<SensorOverviewPage />}
-            />
-            <Route
-              index
-              path={"/device/overview"}
-              element={<DeviceOverviewPage />}
-            />
-            <Route
-              index
               path={"/sensor/dashboard"}
               element={<SensorDashboardPage />}
             />
-            <Route
-              index
-              path={"/rule"}
-              element={<Navigate to={"/rule/disease"} />}
-            />
-            <Route index path={"/rule/disease"} element={<DiseaseRulePage />} />
-            <Route index path={"/rule/list"} element={<CultureRulePage />} />
-            <Route
-              index
-              path={"/rule/:id"}
-              element={<CultureRuleDetailPage />}
-            />
+            <Route path={"/rule"} element={<Navigate to={"/rule/disease"} />} />
+            <Route path={"/rule/disease"} element={<DiseaseRulePage />} />
+            <Route path={"/rule/list"} element={<CultureRulePage />} />
+            <Route path={"/rule/:id"} element={<CultureRuleDetailPage />} />
           </Routes>
         </ProLayout>
       </div>

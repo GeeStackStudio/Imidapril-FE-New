@@ -11,6 +11,7 @@ import { useOpenApiFpRequest } from "../../../Http/useOpenApiRequest";
 import { BsFan } from "react-icons/bs";
 import { TbMeat } from "react-icons/tb";
 import "./ControlDeviceCard.less";
+import { lighten } from "@ant-design/pro-components";
 export interface DeviceControlItem {
   device: DeviceDto;
   controlCabinet?: ControlCabinetDto;
@@ -94,7 +95,7 @@ export function ControlDeviceCard(props: {
           justify={"center"}
           style={{
             borderRadius: "50%",
-            background: "#fff",
+            background: isOn.value ? lighten(shadowColor, 3) : "#fff",
             width: 105,
             height: 105,
             alignSelf: "center",
@@ -105,13 +106,13 @@ export function ControlDeviceCard(props: {
           {props.item.device.name?.includes("增氧机") && (
             <BsFan
               className={isOn.value ? "icon-spinning" : undefined}
-              style={{ fontSize: 60, color: "#666" }}
+              style={{ fontSize: 60, color: isOn.value ? "#fff" : "#666" }}
             />
           )}
           {props.item.device.name?.includes("投饵机") && (
             <TbMeat
               className={isOn.value ? "icon-spinning" : undefined}
-              style={{ fontSize: 60, color: "#666" }}
+              style={{ fontSize: 60, color: isOn.value ? "#fff" : "#666" }}
             />
           )}
         </Flex>

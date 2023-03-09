@@ -372,7 +372,7 @@ export function CultureDetailPage() {
         {currentTab === "Basic" && (
           <div>
             <Row gutter={32}>
-              <Col span={8}>
+              <Col span={6}>
                 <Typography.Title level={4}>
                   {cultureName}基本信息
                 </Typography.Title>
@@ -467,133 +467,6 @@ export function CultureDetailPage() {
                         />
                       ))}
                     </Steps>
-                  </ProCard>
-                </div>
-              </Col>
-              <Col span={8}>
-                <div>
-                  <Typography.Title level={4}>操作</Typography.Title>
-                  <ProCard
-                    style={{ overflow: "auto" }}
-                    bodyStyle={{ height: 260 }}
-                  >
-                    <Flex wrap={"wrap"}>
-                      <WorkScheduleSproutButton
-                        cultureBatchId={findHook.data?.id}
-                        onSuccess={() => refresh()}
-                      />
-                      <WorkSchedulePlantMeasureButton
-                        cultureBatchId={findHook.data?.id}
-                        onSuccess={() => refresh()}
-                      />
-                      <WorkScheduleDeathReportButton
-                        cultureBatchId={findHook.data?.id}
-                        onSuccess={() => refresh()}
-                      />
-                    </Flex>
-
-                    <Flex wrap={"wrap"}>
-                      <Flex
-                        justify={"space-between"}
-                        align={"center"}
-                        direction={"row"}
-                        style={{ padding: 12, width: 144 }}
-                      >
-                        <Typography.Text style={{ fontSize: 12 }}>
-                          喷淋系统
-                        </Typography.Text>
-                        <Switch
-                          onChange={(v) => {
-                            unity.sendMessage(
-                              "Scripts",
-                              "CameraToZheyangwangPos"
-                            );
-                            if (v) {
-                              unity.sendMessage("Scripts", "PenlinAllOn");
-                            } else {
-                              unity.sendMessage("Scripts", "PenlinAllOff");
-                            }
-                          }}
-                          checkedChildren="开启中"
-                          unCheckedChildren={"关闭中"}
-                        />
-                      </Flex>
-                      <Flex
-                        justify={"space-between"}
-                        align={"center"}
-                        direction={"row"}
-                        style={{ padding: 12, width: 144 }}
-                      >
-                        <Typography.Text style={{ fontSize: 12 }}>
-                          通风系统
-                        </Typography.Text>
-                        <Switch
-                          onChange={(v) => {
-                            unity.sendMessage(
-                              "Scripts",
-                              "NavigateWindControlSystem"
-                            );
-                            if (v) {
-                              for (let i = 1; i <= 14; i++) {
-                                unity.sendMessage("Scripts", "FS" + i + "Open");
-                              }
-                            } else {
-                              for (let i = 1; i <= 14; i++) {
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "FS" + i + "Close"
-                                );
-                              }
-                            }
-                          }}
-                          checkedChildren="开启中"
-                          unCheckedChildren={"关闭中"}
-                        />
-                      </Flex>
-                      <Flex
-                        justify={"space-between"}
-                        align={"center"}
-                        direction={"row"}
-                        style={{ padding: 12, width: 144 }}
-                      >
-                        <Typography.Text style={{ fontSize: 12 }}>
-                          光照系统
-                        </Typography.Text>
-                        <Switch
-                          onChange={(v) => {
-                            unity.sendMessage(
-                              "Scripts",
-                              "CameraToZheyangwangPos"
-                            );
-                            if (v) {
-                              for (let i = 1; i <= 3; i++) {
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "Zheyangwang" + i + "LOpen"
-                                );
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "Zheyangwang" + i + "ROpen"
-                                );
-                              }
-                            } else {
-                              for (let i = 1; i <= 3; i++) {
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "Zheyangwang" + i + "LClose"
-                                );
-                                unity.sendMessage(
-                                  "Scripts",
-                                  "Zheyangwang" + i + "RClose"
-                                );
-                              }
-                            }
-                          }}
-                          checkedChildren="开启中"
-                          unCheckedChildren={"关闭中"}
-                        />
-                      </Flex>
-                    </Flex>
                   </ProCard>
                 </div>
               </Col>

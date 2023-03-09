@@ -16,6 +16,8 @@ import productManageImage from "../../../assets/product-manage.png";
 import smartDeviceImage from "../../../assets/smart-device.png";
 import cultureDataImage from "../../../assets/culture-data.png";
 import qualityControlImage from "../../../assets/quality-control.png";
+import { NavLink, redirect } from "react-router-dom";
+
 import {
   CultureBriefApi,
   DeviceApi,
@@ -35,7 +37,7 @@ import { MissionFinishLineChart } from "../../../components/shared/MissionFinish
 import { useNavigate } from "react-router-dom";
 
 const GzzyAppIndexPage: React.FunctionComponent<any> = () => {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const cultureBriefHook = useOpenApiFpRequest(
     CultureBriefApi,
     CultureBriefApi.prototype.cultureBriefSearchGet
@@ -245,24 +247,29 @@ const GzzyAppIndexPage: React.FunctionComponent<any> = () => {
                   justify={"space-around"}
                   align={"center"}
                 >
-                  <Flex
-                    className="entry-item"
-                    direction={"column"}
-                    align={"center"}
-                    justify={"center"}
-                    style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      history("/culture/list");
-                    }}
+                  <NavLink
+                    to="/culture"
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "active" : ""
+                    }
                   >
-                    <img src={productManageImage} />
-                    <Typography.Text
-                      style={{ color: "#02c2e5", marginTop: 8 }}
-                      strong
+                    <Flex
+                      className="entry-item"
+                      direction={"column"}
+                      align={"center"}
+                      justify={"center"}
+                      style={{ cursor: "pointer" }}
                     >
-                      精细化生产管理
-                    </Typography.Text>
-                  </Flex>
+                      <img src={productManageImage} />
+                      <Typography.Text
+                        style={{ color: "#02c2e5", marginTop: 8 }}
+                        strong
+                      >
+                        精细化生产管理
+                      </Typography.Text>
+                    </Flex>
+                  </NavLink>
+
                   <Flex
                     className="entry-item"
                     direction={"column"}
@@ -285,7 +292,7 @@ const GzzyAppIndexPage: React.FunctionComponent<any> = () => {
                     style={{ cursor: "pointer" }}
                     justify={"center"}
                     onClick={() => {
-                      history("/device/overview");
+                      redirect("/device/overview");
                     }}
                   >
                     <img src={smartDeviceImage} />
@@ -296,36 +303,6 @@ const GzzyAppIndexPage: React.FunctionComponent<any> = () => {
                       智能化设备
                     </Typography.Text>
                   </Flex>
-                  {/*<Flex*/}
-                  {/*  className="entry-item"*/}
-                  {/*  direction={"column"}*/}
-                  {/*  align={"center"}*/}
-                  {/*  style={{ cursor: "pointer" }}*/}
-                  {/*  justify={"center"}*/}
-                  {/*>*/}
-                  {/*  <img src={cultureDataImage} />*/}
-                  {/*  <Typography.Text*/}
-                  {/*    style={{ color: "#02c2e5", marginTop: 8 }}*/}
-                  {/*    strong*/}
-                  {/*  >*/}
-                  {/*    养殖数据分析*/}
-                  {/*  </Typography.Text>*/}
-                  {/*</Flex>*/}
-                  {/*<Flex*/}
-                  {/*  className="entry-item"*/}
-                  {/*  direction={"column"}*/}
-                  {/*  align={"center"}*/}
-                  {/*  justify={"center"}*/}
-                  {/*  style={{ cursor: "pointer" }}*/}
-                  {/*>*/}
-                  {/*  <img src={qualityControlImage} />*/}
-                  {/*  <Typography.Text*/}
-                  {/*    style={{ color: "#02c2e5", marginTop: 8 }}*/}
-                  {/*    strong*/}
-                  {/*  >*/}
-                  {/*    养殖过程质量控制*/}
-                  {/*  </Typography.Text>*/}
-                  {/*</Flex>*/}
                 </Flex>
               </BlueCard>
             </Col>

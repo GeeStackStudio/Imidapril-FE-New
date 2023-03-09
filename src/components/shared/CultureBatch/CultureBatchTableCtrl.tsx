@@ -35,6 +35,7 @@ export function CultureBatchTableCtrl(props: {
 
   return (
     <CultureBatchTable
+      rowKey={"id"}
       style={props.style}
       {...tableProps}
       onClickDetail={props.onClickDetail}

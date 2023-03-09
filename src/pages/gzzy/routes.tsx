@@ -19,33 +19,10 @@ const route = {
       name: "环境大屏",
       icon: <SmileFilled />,
     },
-    // {
-    //   path: "/rule",
-    //   name: "专家系统",
-    //   icon: <CrownFilled />,
-    //   access: "canAdmin",
-    //   routes: [
-    //     {
-    //       path: "/rule/sub-page1",
-    //       name: "一级页面",
-    //       icon: "https://gw.alipayobjects.com/zos/antfincdn/upvrAjAPQX/Logo_Tech%252520UI.svg",
-    //     },
-    //     {
-    //       path: "/rule/sub-page2",
-    //       name: "二级页面",
-    //       icon: <CrownFilled />,
-    //     },
-    //     {
-    //       path: "/rule/sub-page3",
-    //       name: "三级页面",
-    //       icon: <CrownFilled />,
-    //     },
-    //   ],
-    // },
     {
       name: "生产系统",
       icon: <TabletFilled />,
-      path: "/culture/list",
+      path: "/culture",
       routes: [
         {
           path: "/culture",
@@ -82,18 +59,18 @@ const route = {
           icon: <CrownFilled />,
           routes: [
             {
-              path: "/device/test",
-              name: "设备测试",
-              icon: <CrownFilled style={{ color: "#cf1322" }} />,
-            },
-            {
               path: "/device/overview",
-              name: "设备概览",
+              name: "设备控制",
               icon: <CrownFilled style={{ color: "#cf1322" }} />,
             },
             {
               path: "/sensor/overview",
               name: "环境数据",
+              icon: <CrownFilled style={{ color: "#cf1322" }} />,
+            },
+            {
+              path: "/device/test",
+              name: "设备测试",
               icon: <CrownFilled style={{ color: "#cf1322" }} />,
             },
           ],
